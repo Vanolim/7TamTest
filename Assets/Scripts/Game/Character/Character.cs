@@ -2,8 +2,7 @@ using UnityEngine;
 
 namespace TapTest
 {
-    public class Character : MonoBehaviour,
-        IInitializable
+    public class Character : MonoBehaviour
     {
         [SerializeField]
         private CharacterColor _characterColor;

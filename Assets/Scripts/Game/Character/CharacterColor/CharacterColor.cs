@@ -13,6 +13,8 @@ namespace TapTest
 
         private void SetRandomColor()
         {
+            Debug.Log(1111);
+            
             _currentColor = new Color(
                 GetRandomValue(),
                 GetRandomValue(),
@@ -37,7 +39,8 @@ namespace TapTest
             }
             else
             {
-                _spriteRenderer.color = (Color)stream.ReceiveNext();
+                Color color = (Color)stream.ReceiveNext();
+                _spriteRenderer.color = color;
             }
         }
     }

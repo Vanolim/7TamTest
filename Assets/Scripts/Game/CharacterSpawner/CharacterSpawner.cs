@@ -22,6 +22,7 @@ namespace TapTest
             pool.ResourceCache.Add(_character.name, _character.gameObject);
             
             Character character = _spawner.Spawn<Character>(_character.name, GetRandomPosition());
+            character.Initialize();
         }
 
         private Vector2 GetRandomPosition() => new(Random.Range(-10, 10), Random.Range(-10, 10));
