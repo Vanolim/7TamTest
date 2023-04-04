@@ -20,6 +20,7 @@ namespace TapTest
         
         public void Initialize()
         {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             SetRandomColor();
         }
     }
