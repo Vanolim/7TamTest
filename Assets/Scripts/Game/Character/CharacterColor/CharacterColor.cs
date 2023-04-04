@@ -1,10 +1,12 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace TapTest
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class CharacterColor : MonoBehaviour,
-        IInitializable
+        IInitializable,
+        IPunObservable
     {
         private SpriteRenderer _spriteRenderer;
 
@@ -22,6 +24,18 @@ namespace TapTest
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             SetRandomColor();
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(_spriteRenderer);
+            }
+            else
+            {
+                _spriteRenderer = (SpriteRenderer)stream.ReceiveNext();
+            }
         }
     }
 }
