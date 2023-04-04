@@ -9,13 +9,16 @@ namespace TapTest
         IPunObservable
     {
         private SpriteRenderer _spriteRenderer;
+        private Color _currentColor;
 
         private void SetRandomColor()
         {
-            _spriteRenderer.color = new Color(
+            _currentColor = new Color(
                 GetRandomValue(),
                 GetRandomValue(),
                 GetRandomValue());
+            
+            _spriteRenderer.color = _currentColor;
         }
 
         private float GetRandomValue() => Random.Range(0f, 1f);
@@ -30,11 +33,11 @@ namespace TapTest
         {
             if (stream.IsWriting)
             {
-                stream.SendNext(_spriteRenderer);
+                stream.SendNext(_currentColor);
             }
             else
             {
-                _spriteRenderer = (SpriteRenderer)stream.ReceiveNext();
+                _currentColor = (Color)stream.ReceiveNext();
             }
         }
     }
