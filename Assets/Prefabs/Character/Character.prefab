@@ -156,6 +156,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 3122253897252529214}
+  - {fileID: 2681134268030633259}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -520,7 +521,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.42196614, g: 0.4595639, b: 0.9931607, a: 1}
+  m_Color: {r: 0.925351, g: 0.5451724, b: 0.58266526, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

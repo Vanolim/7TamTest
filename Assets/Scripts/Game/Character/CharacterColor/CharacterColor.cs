@@ -37,7 +37,7 @@ namespace TapTest
             }
             else
             {
-                _currentColor = (Color)stream.ReceiveNext();
+                _spriteRenderer.color = (Color)stream.ReceiveNext();
             }
         }
     }
