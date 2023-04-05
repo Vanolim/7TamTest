@@ -30,8 +30,14 @@ namespace TapTest
             _characterMovement = character.CharacterMovement;
         }
 
-        public void Tick(float dt) => 
-            _characterMovement.Move(_characterInput.Character.Move.ReadValue<Vector2>());
+        public void Tick(float dt)
+        {
+            Vector2 inputDirection = _characterInput.Character.Move.ReadValue<Vector2>();
+            if (inputDirection != Vector2.zero)
+            {
+                _characterMovement.Move(_characterInput.Character.Move.ReadValue<Vector2>(), dt);
+            }
+        }
 
         private void Shoot() => _characterGun.TryShoot();
 
