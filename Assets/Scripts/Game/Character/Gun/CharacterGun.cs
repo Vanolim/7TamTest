@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TapTest
 {
-    public class Gun
+    public class CharacterGun : MonoBehaviour
     {
         private CharacterSetting _characterSetting;
         private CoroutineService _coroutineService;
@@ -23,6 +23,7 @@ namespace TapTest
 
         public void TryShoot()
         {
+            Debug.Log("Shoot");
             if (_isReload)
             {
                 Shoot();

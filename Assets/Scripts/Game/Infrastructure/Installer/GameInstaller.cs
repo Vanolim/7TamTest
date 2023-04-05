@@ -17,8 +17,11 @@ namespace TapTest
             BindInstance(_gameProvider.Character);
             BindInstance(_gameProvider.CharacterSetting);
             BindInstance(new CharacterSpawner());
+            BindInstance(new InputAdapter());
             
             BindPrefab(_gameProvider.Spawner);
+            BindPrefab(_gameProvider.TickableService);
+            BindPrefab(_gameProvider.InputPanel);
 
             this.BindThis(Container, this);
         }

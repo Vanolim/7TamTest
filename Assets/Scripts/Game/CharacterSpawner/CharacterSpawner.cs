@@ -1,6 +1,8 @@
+using System;
 using Photon.Pun;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace TapTest
 {
@@ -8,6 +10,8 @@ namespace TapTest
     {
         private Spawner _spawner;
         private Character _character;
+
+        public event Action<Character> OnSpawn;
 
         [Inject]
         private void Construct(Spawner spawner, Character character)
@@ -23,6 +27,8 @@ namespace TapTest
             
             Character character = _spawner.Spawn<Character>(_character.name, GetRandomPosition());
             character.Initialize();
+            
+            OnSpawn?.Invoke(character);
         }
 
         private Vector2 GetRandomPosition() => new(Random.Range(-10, 10), Random.Range(-10, 10));

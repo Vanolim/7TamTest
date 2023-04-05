@@ -12,5 +12,11 @@ namespace TapTest
         
         [field: SerializeField]
         public Character Character { get; private set; }
+        
+        [field: SerializeField]
+        public InputPanel InputPanel { get; private set; }
+        
+        [field: SerializeField]
+        public TickableService TickableService { get; private set; }
     }
 }

@@ -6,6 +6,12 @@ namespace TapTest
     {
         [SerializeField]
         private CharacterColor _characterColor;
+
+        [field: SerializeField]
+        public CharacterMovement CharacterMovement { get; private set; }
+
+        [field: SerializeField]
+        public CharacterGun CharacterGun { get; private set; }
         
         public void Initialize()
         {

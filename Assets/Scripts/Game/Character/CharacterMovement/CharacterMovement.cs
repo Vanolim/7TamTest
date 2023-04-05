@@ -5,14 +5,9 @@ namespace TapTest
 {
     public class CharacterMovement : MonoBehaviour
     {
-        private PhotonView _photonView;
-        
-        private void Update()
+        public void Move(Vector2 moveDirection)
         {
-            if (_photonView.IsMine)
-            {
-                
-            }
+            Debug.Log(moveDirection);
         }
     }
 }
