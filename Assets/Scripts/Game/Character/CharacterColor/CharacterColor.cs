@@ -3,45 +3,32 @@ using UnityEngine;
 
 namespace TapTest
 {
-    [RequireComponent(typeof(SpriteRenderer))]
     public class CharacterColor : MonoBehaviour,
-        IInitializable,
-        IPunObservable
+        IInitializable
     {
+        [SerializeField]
         private SpriteRenderer _spriteRenderer;
-        private Color _currentColor;
+        
+        private PhotonView _photonView;
+        private Color _color;
 
         private void SetRandomColor()
         {
-            Debug.Log(1111);
-            
-            _currentColor = new Color(
-                GetRandomValue(),
-                GetRandomValue(),
-                GetRandomValue());
-            
-            _spriteRenderer.color = _currentColor;
+            _color = Random.ColorHSV();
+            _photonView.RPC("SetColor", RpcTarget.AllBuffered, 
+                new Vector3(_color.r, _color.g, _color.b));
         }
 
         private float GetRandomValue() => Random.Range(0f, 1f);
+
+        [PunRPC]
+        private void SetColor(Vector3 color) => 
+            _spriteRenderer.color = new Color(color.x, color.y, color.z);
         
         public void Initialize()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _photonView = GetComponent<PhotonView>();
             SetRandomColor();
-        }
-
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (stream.IsWriting)
-            {
-                stream.SendNext(_currentColor);
-            }
-            else
-            {
-                Color color = (Color)stream.ReceiveNext();
-                _spriteRenderer.color = color;
-            }
         }
     }
 }

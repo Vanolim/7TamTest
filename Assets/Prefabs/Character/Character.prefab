@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 7437953238945728695}
   - component: {fileID: 3122253897252529214}
   - component: {fileID: 793373268647070276}
+  - component: {fileID: 7588654627701332577}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -151,12 +152,11 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 3122253897252529214}
-  - {fileID: 2681134268030633259}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -188,7 +188,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0018c534b21f481f90c727c21db60e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterColor: {fileID: 2681134268030633259}
+  _characterColor: {fileID: 7588654627701332577}
+--- !u!114 &7588654627701332577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039554934206406082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6efa38c75a474b4fb81e2e39d4713039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 8113446597655755175}
 --- !u!1 &5667855709500834462
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +465,6 @@ GameObject:
   m_Component:
   - component: {fileID: 731999122806101444}
   - component: {fileID: 8113446597655755175}
-  - component: {fileID: 2681134268030633259}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -531,18 +543,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2681134268030633259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6420016949342639504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6efa38c75a474b4fb81e2e39d4713039, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6598877755605839256
 GameObject:
   m_ObjectHideFlags: 0
