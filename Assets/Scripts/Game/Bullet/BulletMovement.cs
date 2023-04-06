@@ -2,22 +2,17 @@
 
 namespace TapTest
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     public class BulletMovement : MonoBehaviour
     {
         [SerializeField]
         private float _speed;
 
-        [SerializeField]
-        private Rigidbody2D _rb;
-
-        private void FixedUpdate()
+        private void Update()
         {
             Move();
         }
 
-        private void Move() => _rb.MovePosition(_rb.transform.localPosition +
-                                                GetTargetDirection() * _speed * Time.fixedDeltaTime);
+        private void Move() => transform.Translate(Vector3.up * _speed * Time.deltaTime);
 
         private Vector3 GetTargetDirection() => transform.TransformDirection(Vector3.up);
     }
