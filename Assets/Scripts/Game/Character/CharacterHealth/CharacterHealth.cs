@@ -29,6 +29,7 @@ namespace TapTest
         private void TakeDamage(float value)
         {
             _currentValue -= value;
+            Debug.Log(_currentValue);
             if (_currentValue <= 0)
             {
                 _gamePhotonService.LeaveRoom();
@@ -39,8 +40,11 @@ namespace TapTest
         }
         
         [PunRPC]
-        private void UpdateHealthBar(float maxValue, float currentValue) => 
+        private void UpdateHealthBar(float maxValue, float currentValue)
+        {
+            Debug.Log("Update");
             _characterHealthView.UpdateHealthBar(currentValue / maxValue);
+        }
 
         public void Initialize()
         {

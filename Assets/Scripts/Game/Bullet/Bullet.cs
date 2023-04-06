@@ -26,7 +26,7 @@ namespace TapTest
             if (col.gameObject.TryGetComponent(out CharacterHealth characterHealth))
             {
                 PhotonView pht = characterHealth.PhotonView;
-                pht.RPC("TakeDamage",RpcTarget.AllBuffered,_damage);
+                pht.RPC("TakeDamage", RpcTarget.AllBuffered, _damage);
             }
             
             OnDestroyed?.Invoke(this);
