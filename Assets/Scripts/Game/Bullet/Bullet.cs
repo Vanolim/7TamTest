@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using System;
+using Photon.Pun;
 using UnityEngine;
 
 namespace TapTest
@@ -11,6 +12,8 @@ namespace TapTest
 
         [SerializeField]
         private float _damage;
+
+        public event Action<Bullet> OnDestroyed;
         
         public void SetPosition(Transform position)
         {
@@ -25,23 +28,7 @@ namespace TapTest
                 damageable.TakeDamage(_damage);
             }
             
-            if (PhotonView.IsMine)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                PhotonView.RPC(" RPC_Destroy", RpcTarget.Others);
-            }
-        }
-        
-        [PunRPC]
-        private void RPC_Destroy()
-        {
-            if (PhotonView.IsMine)
-            {
-                Destroy(gameObject);
-            }
+            OnDestroyed?.Invoke(this);
         }
 
         public void Activate() => gameObject.SetActive(true);

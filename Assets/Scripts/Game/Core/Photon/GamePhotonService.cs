@@ -18,6 +18,8 @@ namespace TapTest
         private const byte CharacterSpawnEventCode = 1;
         private const byte BulletSpawnEventCode = 2;
 
+        private int start = 100;
+
         public event Action OnLeaveRoom;
         
         public void LeaveRoom()
@@ -42,8 +44,6 @@ namespace TapTest
 
         public void RegisterCharacter(Character character)
         {
-            Debug.Log("Reg");
-            
             PhotonView photonView = character.PhotonView;
             if (PhotonNetwork.AllocateViewID(photonView))
             {
