@@ -50,7 +50,7 @@ namespace TapTest
 
         public void Initialize()
         {
-            PhotonView = GetComponent<PhotonView>();
+            PhotonView = gameObject.GetComponent<PhotonView>();
             _maxValue = _characterSetting.InitHealth;
             _currentValue = _maxValue;
         }

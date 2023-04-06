@@ -39,7 +39,7 @@ namespace TapTest
 
         public void Initialize()
         {
-            _rb = GetComponent<Rigidbody2D>();
+            _rb = gameObject.GetComponent<Rigidbody2D>();
         }
     }
 }

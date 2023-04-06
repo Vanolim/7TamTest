@@ -28,7 +28,7 @@ namespace TapTest
         
         public void Initialize()
         {
-            _photonView = GetComponent<PhotonView>();
+            _photonView = gameObject.GetComponent<PhotonView>();
             SetRandomColor();
         }
     }
