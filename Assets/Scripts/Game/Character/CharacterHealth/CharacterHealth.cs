@@ -8,6 +8,7 @@ namespace TapTest
     public class CharacterHealth : MonoBehaviour,
         IInitializable
     {
+        [field: SerializeField]
         public PhotonView PhotonView { get; private set; }
         
         [SerializeField]

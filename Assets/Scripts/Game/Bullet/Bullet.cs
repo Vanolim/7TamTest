@@ -9,9 +9,10 @@ namespace TapTest
     public class Bullet : MonoBehaviour,
         IActivable
     {
-        private float _damage;
-        
+        [field:SerializeField]
         public PhotonView PhotonView { get; private set; }
+        
+        private float _damage;
 
         public event Action<Bullet> OnDestroyed;
         
@@ -23,7 +24,7 @@ namespace TapTest
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (PhotonView != null && PhotonView.IsMine)
+            if (PhotonView.IsMine)
             {
                 if (col.gameObject.TryGetComponent(out CharacterHealth characterHealth))
                 {
