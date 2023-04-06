@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01685488621d48f9b5ba2375b2f52581, type: 3}
-  m_Name: CharacterSetting
+  m_Script: {fileID: 11500000, guid: 1fd7d6e10ee34715b9c24c2da7e9aefd, type: 3}
+  m_Name: GameSetting
   m_EditorClassIdentifier: 
-  <MovementSpeed>k__BackingField: 5
-  <RotationSpeed>k__BackingField: 800
-  <GunReloadTime>k__BackingField: 0.4
-  <InitHealth>k__BackingField: 10
+  <CountCoins>k__BackingField: 20

@@ -1,15 +1,19 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace TapTest
 {
-    public class CharacterHealthView : MonoBehaviour
+    public class CharacterCanvasView : MonoBehaviour
     {
         [SerializeField]
         private Transform _pivot;
         
         [SerializeField]
-        private Image _image;
+        private Image _health;
+
+        [SerializeField]
+        private TMP_Text _coin;
         
         private void LateUpdate()
         {
@@ -22,6 +26,8 @@ namespace TapTest
             transform.rotation = Quaternion.identity;
         }
 
-        public void UpdateHealthBar(float delta) => _image.fillAmount = delta;
+        public void UpdateHealthBar(float delta) => _health.fillAmount = delta;
+
+        public void UpdateCoinWallet(int value) => _coin.text = value.ToString();
     }
 }

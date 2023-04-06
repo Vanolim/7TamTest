@@ -1,6 +1,4 @@
-using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace TapTest
 {
@@ -8,12 +6,16 @@ namespace TapTest
     {
         private GamePhotonService _gamePhotonService;
         private Character _character;
+        private GameBoard _gameBoard;
         
         [Inject]
-        private void Construct(GamePhotonService gamePhotonService, Character character)
+        private void Construct(GamePhotonService gamePhotonService, Character character,
+            GameBoard gameBoard)
         {
             _gamePhotonService = gamePhotonService;
             _character = character;
+            _gameBoard = gameBoard;
+            
             Spawn();
         }
 
@@ -21,6 +23,7 @@ namespace TapTest
         {
             _gamePhotonService.RegisterCharacter(_character);
             _character.Initialize();
+            _character.SetPosition(_gameBoard.GetRandomSpawnPoint());
             _character.Activate();
         }
     }

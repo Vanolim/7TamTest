@@ -24,5 +24,11 @@ namespace TapTest
         
         [field: SerializeField]
         public BulletSetting BulletSetting { get; private set; }
+        
+        [field: SerializeField]
+        public GameSetting GameSetting { get; private set; }
+        
+        [field: SerializeField]
+        public GameBoard GameBoard { get; private set; }
     }
 }

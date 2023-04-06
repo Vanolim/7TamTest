@@ -51,6 +51,7 @@ MonoBehaviour:
   - RPC_SetColor
   - RPC_TakeDamage
   - RPC_UpdateHealthBar
+  - RPC_UpdateCoinWalletView
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

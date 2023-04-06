@@ -12,7 +12,7 @@ namespace TapTest
         public PhotonView PhotonView { get; private set; }
         
         [SerializeField]
-        private CharacterHealthView _characterHealthView;
+        private CharacterCanvasView _characterCanvasView;
         
         private CharacterSetting _characterSetting;
         private GamePhotonService _gamePhotonService;
@@ -34,7 +34,7 @@ namespace TapTest
                 _currentValue -= value;
                 if (_currentValue <= 0)
                 {
-                    _gamePhotonService.LeaveRoom();
+                    //_gamePhotonService.LeaveRoom();
                 }
 
                 PhotonView.RPC("RPC_UpdateHealthBar", RpcTarget.AllBuffered, 
@@ -45,7 +45,7 @@ namespace TapTest
         [PunRPC]
         private void RPC_UpdateHealthBar(float maxValue, float currentValue)
         {
-            _characterHealthView.UpdateHealthBar(currentValue / maxValue);
+            _characterCanvasView.UpdateHealthBar(currentValue / maxValue);
         }
 
         public void Initialize()

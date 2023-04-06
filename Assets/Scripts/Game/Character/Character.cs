@@ -22,12 +22,17 @@ namespace TapTest
         [field: SerializeField]
         public CharacterGun CharacterGun { get; private set; }
         
+        [field: SerializeField]
+        public CharacterCanvasView CharacterCanvasView { get; private set; }
+        
         public void Initialize()
         {
             _characterColor.Initialize();
             _characterHealth.Initialize();
             CharacterMovement.Initialize();
         }
+
+        public void SetPosition(Vector2 position) => transform.position = position;
 
         public void Activate() => gameObject.SetActive(true);
         public void Deactivate() => gameObject.SetActive(false);

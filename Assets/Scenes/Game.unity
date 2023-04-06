@@ -198,13 +198,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CharacterSetting>k__BackingField: {fileID: 11400000, guid: 6d6f3d7a91fae41ffa271e59eb25965b, type: 2}
-  <Spawner>k__BackingField: {fileID: 2357217605940111882, guid: a48e30076d0ff41d49412604490387cf, type: 3}
   <Character>k__BackingField: {fileID: 793373268647070276, guid: d3730290779bc438d935fabf4c91cdc0, type: 3}
   <InputPanel>k__BackingField: {fileID: 2863087363964527536, guid: cbf6b45e136c245e2a072988d393a40b, type: 3}
   <TickableService>k__BackingField: {fileID: 606261367041414434, guid: f69887aaaa96b4684817413ab0775329, type: 3}
   <GamePhotonService>k__BackingField: {fileID: 3534031161723250364, guid: 09f319be311b64ace893cbca26edcd12, type: 3}
   <Bullet>k__BackingField: {fileID: 3329305686788409713, guid: 8337a78afd980458280c1ac655068d67, type: 3}
   <BulletSetting>k__BackingField: {fileID: 11400000, guid: be88a59951c8840d88c28333242a3444, type: 2}
+  <GameSetting>k__BackingField: {fileID: 11400000, guid: 24d1bce3c59ac4c4e8a751e6b4ea688e, type: 2}
+  <GameBoard>k__BackingField: {fileID: 7045403842772991216, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
 --- !u!4 &155706311
 Transform:
   m_ObjectHideFlags: 0
@@ -303,94 +304,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &553391149
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4416283575133353601, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_Name
-      value: GameBoard (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7287901282846150755, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
---- !u!1 &934510726
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 934510727}
-  m_Layer: 0
-  m_Name: GameBoard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &934510727
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934510726}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &982295843
 GameObject:
