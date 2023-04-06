@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2462761063734928314}
   - component: {fileID: 3339360199139882384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 3694226127250019653}
   - component: {fileID: 2084701806271746565}
   - component: {fileID: 1970899642704925898}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1393565780140502983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6921800204924707483}
   - component: {fileID: 8665582210669599743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1069176071247477971}
   - component: {fileID: 5456721243875895948}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2719753840674746897}
   - component: {fileID: 5680247214740934825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 731999122806101444}
   - component: {fileID: 8113446597655755175}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 952299127856430402}
   - component: {fileID: 2845751959817973006}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,9 +831,21 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3279536796552243525, guid: 62497d9f9ea4b4df49778ff30e8baad5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5044522021688951819, guid: 62497d9f9ea4b4df49778ff30e8baad5, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5044522021688951819, guid: 62497d9f9ea4b4df49778ff30e8baad5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765845195236035874, guid: 62497d9f9ea4b4df49778ff30e8baad5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8324302261182850766, guid: 62497d9f9ea4b4df49778ff30e8baad5, type: 3}
       propertyPath: m_FillAmount
