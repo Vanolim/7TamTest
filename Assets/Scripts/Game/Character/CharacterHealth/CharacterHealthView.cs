@@ -22,10 +22,9 @@ namespace TapTest
             transform.rotation = Quaternion.identity;
         }
 
-        public void UpdateHealthBar(float maxHealth, float currentHealth)
+        public void UpdateHealthBar(float delta)
         {
-            Debug.Log($"{maxHealth} -- {currentHealth}");
-            _image.fillAmount = currentHealth / maxHealth;
+            _image.fillAmount = delta;
         }
     }
 }

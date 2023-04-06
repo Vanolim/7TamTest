@@ -36,13 +36,14 @@ namespace TapTest
                     _gamePhotonService.LeaveRoom();
                 }
 
-                _photonView.RPC("UpdateHealthBar", RpcTarget.AllBuffered, _currentValue);
+                _photonView.RPC("UpdateHealthBar", RpcTarget.AllBuffered, _maxValue, 
+                    _currentValue);
             }
         }
         
         [PunRPC]
-        private void UpdateHealthBar(float currentValue) => 
-            _characterHealthView.UpdateHealthBar(_maxValue, currentValue);
+        private void UpdateHealthBar(float maxValue, float currentValue) => 
+            _characterHealthView.UpdateHealthBar(currentValue / maxValue);
 
         public void Initialize()
         {
