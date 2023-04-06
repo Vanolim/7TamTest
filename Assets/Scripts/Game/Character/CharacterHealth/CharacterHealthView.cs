@@ -20,8 +20,8 @@ namespace TapTest
         {
             UpdateHealthViewTransform();
             
-            _photonView.RPC("UpdateHealthBatTransform", RpcTarget.Others, 
-                transform.position);
+            // _photonView.RPC("RPC_UpdateHeathBarTransform", RpcTarget.Others, 
+            //     transform.position);
         }
 
         private void UpdateHealthViewTransform()
@@ -31,7 +31,7 @@ namespace TapTest
         }
 
         [PunRPC]
-        private void UpdateHealthBatTransform(Vector3 position)
+        private void RPC_UpdateHeathBarTransform(Vector3 position)
         {
             transform.position = position;
             transform.rotation = Quaternion.identity;
