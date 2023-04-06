@@ -23,7 +23,7 @@ namespace TapTest
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (PhotonView.IsMine)
+            if (PhotonView != null && PhotonView.IsMine)
             {
                 if (col.gameObject.TryGetComponent(out CharacterHealth characterHealth))
                 {
@@ -56,8 +56,8 @@ namespace TapTest
         public void Initialize(BulletSetting bulletSetting)
         {
             _damage = bulletSetting.Damage;
-            gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);
             PhotonView = gameObject.GetComponent<PhotonView>();
+            gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);
         }
     }
 }
