@@ -43,7 +43,7 @@ namespace TapTest
             {
                 object[] data = new object[]
                 {
-                    character.transform.position, character.transform.position, photonView.ViewID
+                    character.transform.position, character.transform.rotation, photonView.ViewID
                 };
 
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions
