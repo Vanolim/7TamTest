@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1965921490141868199}
   - component: {fileID: 3329305686788409713}
   - component: {fileID: 2341507154912107449}
+  - component: {fileID: 5856607884502184231}
+  - component: {fileID: 7770642705771765263}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -68,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e42c78ce09470882f60eceab53ddf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PhotonView>k__BackingField: {fileID: 5856607884502184231}
 --- !u!114 &2341507154912107449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +85,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _rb: {fileID: 1965921490141868199}
+--- !u!114 &5856607884502184231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116285991548858690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 0
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 7770642705771765263}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &7770642705771765263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116285991548858690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7048039025017723324
 GameObject:
   m_ObjectHideFlags: 0

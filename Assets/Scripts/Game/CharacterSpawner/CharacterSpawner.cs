@@ -23,7 +23,5 @@ namespace TapTest
             _character.Initialize();
             _character.Activate();
         }
-
-        private Vector2 GetRandomPosition() => new(Random.Range(-10, 10), Random.Range(-10, 10));
     }
 }

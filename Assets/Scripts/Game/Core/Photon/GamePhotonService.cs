@@ -12,8 +12,12 @@ namespace TapTest
         [SerializeField]
         private Character _prefab;
         
-        private const byte CharacterSpawnEventCode = 1;
+        [SerializeField]
+        private Bullet _bullet;
         
+        private const byte CharacterSpawnEventCode = 1;
+        private const byte BulletSpawnEventCode = 2;
+
         public event Action OnLeaveRoom;
         
         public void LeaveRoom()
@@ -64,6 +68,35 @@ namespace TapTest
                 Debug.LogError("Failed allocate");
             }
         }
+        
+        public void RegisterBullet(Bullet bullet)
+        {
+            PhotonView photonView = bullet.PhotonView;
+            if (PhotonNetwork.AllocateViewID(photonView))
+            {
+                object[] data = new object[]
+                {
+                    bullet.transform.position, bullet.transform.rotation, photonView.ViewID
+                };
+
+                RaiseEventOptions raiseEventOptions = new RaiseEventOptions
+                {
+                    Receivers = ReceiverGroup.Others,
+                    CachingOption = EventCaching.AddToRoomCache
+                };
+
+                SendOptions sendOptions = new SendOptions()
+                {
+                    Reliability = true
+                };
+
+                PhotonNetwork.RaiseEvent(CharacterSpawnEventCode, data, raiseEventOptions, sendOptions);
+            }
+            else
+            {
+                Debug.LogError("Failed allocate");
+            }
+        }
 
         public void OnEvent(EventData photonEvent)
         {
@@ -74,6 +107,14 @@ namespace TapTest
                 Character character = Instantiate(_prefab, (Vector3)data[0], (Quaternion)data[1])
                     .GetComponent<Character>();
                 character.PhotonView.ViewID = (int)data[2];
+            }
+            else if (photonEvent.Code == BulletSpawnEventCode)
+            {
+                object[] data = (object[])photonEvent.CustomData;
+
+                Bullet bullet = Instantiate(_prefab, (Vector3)data[0], (Quaternion)data[1])
+                    .GetComponent<Bullet>();
+                bullet.PhotonView.ViewID = (int)data[2];
             }
         }
     }

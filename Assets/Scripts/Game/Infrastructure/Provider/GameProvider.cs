@@ -21,5 +21,8 @@ namespace TapTest
         
         [field: SerializeField]
         public GamePhotonService GamePhotonService { get; private set; }
+        
+        [field: SerializeField]
+        public GameBoard GameBoard { get; private set; }
     }
 }

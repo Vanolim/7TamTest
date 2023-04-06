@@ -8,7 +8,7 @@ namespace TapTest
         [SerializeField]
         private Bullet _bulletPrefab;
 
-        private const int _bulletPoolInitialSize = 20;
+        private const int _bulletPoolInitialSize = 10;
 
         public override void InstallBindings()
         {

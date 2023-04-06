@@ -6,17 +6,20 @@ namespace TapTest
 {
     public class CharacterGun : MonoBehaviour
     {
-        private BulletPool _bulletPool;
+        [SerializeField]
+        private Transform _shootPoint;
+        
+        private BulletSpawner _bulletSpawner;
         private CharacterSetting _characterSetting;
         private CoroutineService _coroutineService;
         private bool _isReload = true;
 
         [Inject]
-        private void Construct(BulletPool bulletPool, CharacterSetting characterSetting,
+        private void Construct(BulletSpawner bulletSpawner, CharacterSetting characterSetting,
             CoroutineService coroutineService)
         {
             _characterSetting = characterSetting;
-            _bulletPool = bulletPool;
+            _bulletSpawner = bulletSpawner;
             _coroutineService = coroutineService;
         }
 
@@ -29,8 +32,7 @@ namespace TapTest
         private void Shoot()
         {
             _isReload = false;
-            Bullet bullet = _bulletPool.Spawn();
-            bullet.Activate();
+            _bulletSpawner.Spawn(_shootPoint);
             _coroutineService.StartCoroutine(WaitReload());
         }
 
