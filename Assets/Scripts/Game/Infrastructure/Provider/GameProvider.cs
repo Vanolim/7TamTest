@@ -18,5 +18,8 @@ namespace TapTest
         
         [field: SerializeField]
         public TickableService TickableService { get; private set; }
+        
+        [field: SerializeField]
+        public GamePhotonService GamePhotonService { get; private set; }
     }
 }

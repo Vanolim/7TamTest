@@ -1,41 +1,37 @@
-using System;
-using Photon.Pun;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
 namespace TapTest
 {
-    public class CharacterSpawner : IInitializable
+    public class CharacterSpawner
     {
-        private Spawner _spawner;
+        private GamePhotonService _gamePhotonService;
         private Character _character;
-
-        public event Action<Character> OnSpawn;
-
+        
         [Inject]
-        private void Construct(Spawner spawner, Character character)
+        private void Construct(GamePhotonService gamePhotonService, Character character)
         {
-            _spawner = spawner;
+            _gamePhotonService = gamePhotonService;
             _character = character;
+            Spawn();
         }
 
         private void Spawn()
         {
-            DefaultPool pool = PhotonNetwork.PrefabPool as DefaultPool;
+            _character.Activate();
+            _gamePhotonService.RegisterCharacter(_character);
+            
+
+            /*DefaultPool pool = PhotonNetwork.PrefabPool as DefaultPool;
             pool.ResourceCache.Add(_character.name, _character.gameObject);
             
             Character character = _spawner.Spawn<Character>(_character.name, GetRandomPosition());
             character.Initialize();
             
-            OnSpawn?.Invoke(character);
+            OnSpawn?.Invoke(character);*/
         }
 
         private Vector2 GetRandomPosition() => new(Random.Range(-10, 10), Random.Range(-10, 10));
-
-        public void Initialize()
-        {
-            Spawn();
-        }
     }
 }

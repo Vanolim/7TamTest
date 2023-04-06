@@ -5,6 +5,9 @@ namespace TapTest
 {
     public class CharacterGun : MonoBehaviour
     {
+        [SerializeField]
+        private Bullet _bullet;
+        
         private CharacterSetting _characterSetting;
         private CoroutineService _coroutineService;
         private bool _isReload;
@@ -18,12 +21,12 @@ namespace TapTest
         private void Shoot()
         {
             _isReload = false;
+            Instantiate(_bullet);
             _coroutineService.StartCoroutine(WaitReload());
         }
 
         public void TryShoot()
         {
-            Debug.Log("Shoot");
             if (_isReload)
             {
                 Shoot();

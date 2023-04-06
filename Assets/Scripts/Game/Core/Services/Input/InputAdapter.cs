@@ -6,8 +6,7 @@ namespace TapTest
 {
     public class InputAdapter : IInitializable,
         IActivable,
-        IDisposable,
-        ITickable
+        IFixedTickable
     {
         private CharacterSpawner _characterSpawner;
         private CharacterGun _characterGun;
@@ -17,11 +16,10 @@ namespace TapTest
         private TickableService _tickableService;
         
         [Inject]
-        private void Construct(CharacterSpawner characterSpawner, TickableService tickableService)
+        private void Construct(Character character, TickableService tickableService)
         {
             _tickableService = tickableService;
-            _characterSpawner = characterSpawner;
-            _characterSpawner.OnSpawn += SetCharacter;
+            SetCharacter(character);
         }
 
         private void SetCharacter(Character character)
@@ -53,9 +51,6 @@ namespace TapTest
         }
 
         public void Activate() => _characterInput.Enable();
-
         public void Deactivate() => _characterInput.Disable();
-
-        public void Dispose() => _characterSpawner.OnSpawn -= SetCharacter;
     }
 }

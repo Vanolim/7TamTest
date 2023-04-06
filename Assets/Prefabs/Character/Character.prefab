@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7859782398847053802}
   - component: {fileID: 2623183886251266075}
+  - component: {fileID: 8464074331777256125}
   - component: {fileID: 7437953238945728695}
   - component: {fileID: 3122253897252529214}
   - component: {fileID: 793373268647070276}
@@ -139,6 +140,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &8464074331777256125
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039554934206406082}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &7437953238945728695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterColor: {fileID: 7588654627701332577}
+  <PhotonView>k__BackingField: {fileID: 7437953238945728695}
   <CharacterMovement>k__BackingField: {fileID: 2084701806271746565}
   <CharacterGun>k__BackingField: {fileID: 3694226127250019653}
 --- !u!114 &7588654627701332577
@@ -218,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd13c7c2f36e441db5b7686372606547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bullet: {fileID: 3329305686788409713, guid: 8337a78afd980458280c1ac655068d67, type: 3}
 --- !u!114 &2084701806271746565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21394e3806ac42b0b705aef56a61bc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rb: {fileID: 8464074331777256125}
   _speedMovement: 8
   _speedRotation: 500
 --- !u!1 &5667855709500834462

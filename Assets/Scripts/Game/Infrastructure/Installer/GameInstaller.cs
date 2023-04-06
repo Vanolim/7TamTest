@@ -14,7 +14,8 @@ namespace TapTest
         
         public override void InstallBindings()
         {
-            BindInstance(_gameProvider.Character);
+            BindPrefab(_gameProvider.Character);
+            BindPrefab(_gameProvider.GamePhotonService);
             BindInstance(_gameProvider.CharacterSetting);
             BindInstance(new CharacterSpawner());
             BindInstance(new InputAdapter());

@@ -1,11 +1,17 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace TapTest
 {
-    public class Character : MonoBehaviour
+    public class Character : MonoBehaviour,
+        IInitializable,
+        IActivable
     {
         [SerializeField]
         private CharacterColor _characterColor;
+        
+        [field: SerializeField] 
+        public PhotonView PhotonView { get; private set; }
 
         [field: SerializeField]
         public CharacterMovement CharacterMovement { get; private set; }
@@ -17,5 +23,8 @@ namespace TapTest
         {
             _characterColor.Initialize();
         }
+
+        public void Activate() => gameObject.SetActive(true);
+        public void Deactivate() => gameObject.SetActive(false);
     }
 }

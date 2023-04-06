@@ -1,15 +1,20 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TapTest
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class BulletMovement : MonoBehaviour
     {
-        //[SerializeField] private 
-        
-        private void Update()
+        [SerializeField]
+        private float _speed;
+
+        [SerializeField]
+        private Rigidbody2D _rb;
+
+        private void FixedUpdate()
         {
-            throw new NotImplementedException();
+            _rb.MovePosition(
+                transform.position + Vector3.forward * _speed * Time.fixedDeltaTime);
         }
     }
 }
