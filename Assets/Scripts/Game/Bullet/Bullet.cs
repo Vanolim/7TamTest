@@ -28,7 +28,6 @@ namespace TapTest
                 damageable.TakeDamage(_damage);
             }
             
-            Debug.Log(col.gameObject.name + " " + col.gameObject.TryGetComponent(out IDamageable damageable1));
             OnDestroyed?.Invoke(this);
         }
 
