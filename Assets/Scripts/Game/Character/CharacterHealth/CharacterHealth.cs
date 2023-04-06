@@ -5,11 +5,10 @@ using Zenject;
 namespace TapTest
 {
     public class CharacterHealth : MonoBehaviour,
-        IDamageable,
         IInitializable
     {
-        [SerializeField]
-        private PhotonView _photonView;
+        [field:SerializeField]
+        public PhotonView PhotonView { get; private set; }
         
         [SerializeField]
         private CharacterHealthView _characterHealthView;
@@ -26,21 +25,17 @@ namespace TapTest
             _gamePhotonService = gamePhotonService;
         }
 
-        public void TakeDamage(float value)
+        [PunRPC]
+        private void TakeDamage(float value)
         {
-            Debug.Log($"{_photonView.IsMine} -- {_currentValue}");
-            
-            if (_photonView.IsMine)
+            _currentValue -= value;
+            if (_currentValue <= 0)
             {
-                _currentValue -= value;
-                if (_currentValue <= 0)
-                {
-                    _gamePhotonService.LeaveRoom();
-                }
-
-                _photonView.RPC("UpdateHealthBar", RpcTarget.AllBuffered, _maxValue, 
-                    _currentValue);
+                _gamePhotonService.LeaveRoom();
             }
+
+            PhotonView.RPC("UpdateHealthBar", RpcTarget.AllBuffered, _maxValue, 
+                _currentValue);
         }
         
         [PunRPC]

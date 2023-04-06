@@ -23,9 +23,10 @@ namespace TapTest
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.TryGetComponent(out IDamageable damageable))
+            if (col.gameObject.TryGetComponent(out CharacterHealth characterHealth))
             {
-                damageable.TakeDamage(_damage);
+                PhotonView pht = characterHealth.PhotonView;
+                pht.RPC("TakeDamage",RpcTarget.AllBuffered,_damage);
             }
             
             OnDestroyed?.Invoke(this);
