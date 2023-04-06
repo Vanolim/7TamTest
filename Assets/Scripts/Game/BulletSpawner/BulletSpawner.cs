@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using Zenject;
 
 namespace TapTest
@@ -26,9 +27,16 @@ namespace TapTest
 
         private void RemoveBullet(Bullet bullet)
         {
-            bullet.Deactivate();
             bullet.OnDestroyed -= RemoveBullet;
-            Object.Destroy(bullet);
+
+            if (bullet.PhotonView.IsMine)
+            {
+                PhotonNetwork.Destroy(bullet.gameObject);
+            }
+            else
+            {
+                Object.Destroy(bullet);
+            }
         }
     }
 }
