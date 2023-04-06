@@ -42,6 +42,8 @@ namespace TapTest
 
         public void RegisterCharacter(Character character)
         {
+            Debug.Log("Reg");
+            
             PhotonView photonView = character.PhotonView;
             if (PhotonNetwork.AllocateViewID(photonView))
             {
@@ -107,6 +109,7 @@ namespace TapTest
                 Character character = Instantiate(_prefab, (Vector3)data[0], (Quaternion)data[1])
                     .GetComponent<Character>();
                 character.PhotonView.ViewID = (int)data[2];
+                character.Initialize();
             }
             else if (photonEvent.Code == BulletSpawnEventCode)
             {
