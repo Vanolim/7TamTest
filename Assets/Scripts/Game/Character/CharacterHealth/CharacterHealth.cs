@@ -28,6 +28,7 @@ namespace TapTest
 
         public void TakeDamage(float value)
         {
+            Debug.Log(value);
             if (_photonView.IsMine)
             {
                 _currentValue -= value;

@@ -27,8 +27,6 @@ namespace TapTest
             {
                 damageable.TakeDamage(_damage);
             }
-            
-            Debug.Log(col.gameObject.name);
             OnDestroyed?.Invoke(this);
         }
 
