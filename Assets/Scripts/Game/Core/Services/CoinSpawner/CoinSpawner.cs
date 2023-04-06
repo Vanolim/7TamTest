@@ -8,12 +8,14 @@ namespace TapTest
     {
         private GameBoard _gameBoard;
         private GameSetting _gameSetting;
+        private Character _character;
 
         [Inject]
-        private void Construct(GameBoard gameBoard, GameSetting gameSetting)
+        private void Construct(GameBoard gameBoard, GameSetting gameSetting, Character character)
         {
             _gameBoard = gameBoard;
             _gameSetting = gameSetting;
+            _character = character;
         }
 
         private void Spawn()
@@ -29,7 +31,7 @@ namespace TapTest
 
         public void Initialize()
         {
-            if(PhotonNetwork.IsMasterClient)
+            if(_character.PhotonView.IsMine)
                 Spawn();
         }
     }
