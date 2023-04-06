@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +8,9 @@ namespace TapTest
         IDamageable,
         IInitializable
     {
+        [SerializeField]
+        private PhotonView _photonView;
+        
         [SerializeField]
         private CharacterHealthView _characterHealthView;
         
@@ -24,21 +28,23 @@ namespace TapTest
 
         public void TakeDamage(float value)
         {
-            Debug.Log(_currentValue);
             _currentValue -= value;
             if (_currentValue <= 0)
             {
                 _gamePhotonService.LeaveRoom();
             }
-            
-            _characterHealthView.UpdateHealthBar(_maxValue, _currentValue);
+
+            _photonView.RPC("UpdateHealthBar", RpcTarget.AllBuffered, _currentValue);
         }
+        
+        [PunRPC]
+        private void UpdateHealthBar(float currentValue) => 
+            _characterHealthView.UpdateHealthBar(_maxValue, currentValue);
 
         public void Initialize()
         {
             _maxValue = _characterSetting.InitHealth;
             _currentValue = _maxValue;
-            _characterHealthView.UpdateHealthBar(_maxValue, _currentValue);
         }
     }
 }
