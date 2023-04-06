@@ -30,6 +30,9 @@ namespace TapTest
         {
             _isReload = false;
             Bullet bullet = _bulletPool.Spawn();
+            bullet.transform.SetParent(transform);
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = Quaternion.identity;
             bullet.Activate();
             _coroutineService.StartCoroutine(WaitReload());
         }
