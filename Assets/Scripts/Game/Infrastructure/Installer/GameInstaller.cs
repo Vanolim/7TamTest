@@ -19,6 +19,7 @@ namespace TapTest
             BindPrefab(_gameProvider.GamePhotonService);
             BindInstance(_gameProvider.CharacterSetting);
             BindInstance(_gameProvider.GameSetting);
+            BindInstance(new Health());
             BindPrefab(_gameProvider.GameBoard);
             BindInstance(_gameProvider.BulletSetting);
             BindInstance(new CoinSpawner());

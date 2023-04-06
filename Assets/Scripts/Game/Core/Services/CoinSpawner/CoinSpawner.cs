@@ -8,15 +8,12 @@ namespace TapTest
     {
         private GameBoard _gameBoard;
         private GameSetting _gameSetting;
-        private CoinWallet _coinWallet;
 
         [Inject]
-        private void Construct(GameBoard gameBoard, GameSetting gameSetting,
-            CoinWallet coinWallet)
+        private void Construct(GameBoard gameBoard, GameSetting gameSetting)
         {
             _gameBoard = gameBoard;
             _gameSetting = gameSetting;
-            _coinWallet = coinWallet;
         }
 
         private void Spawn()
@@ -27,20 +24,13 @@ namespace TapTest
                         Vector3.zero, Quaternion.identity).GetComponent<Coin>();
                 
                 coin.SetPosition(_gameBoard.GetRandomSpawnPoint());
-                coin.OnTacken += TakeCoin;
             }
-        }
-
-        private void TakeCoin(Coin coin)
-        {
-            coin.OnTacken -= TakeCoin;
-            _coinWallet.Add();
-            PhotonNetwork.Destroy(coin.gameObject);
         }
 
         public void Initialize()
         {
-            Spawn();
+            if(PhotonNetwork.IsMasterClient)
+                Spawn();
         }
     }
 }

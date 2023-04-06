@@ -10,9 +10,6 @@ namespace TapTest
         [SerializeField]
         private CharacterColor _characterColor;
 
-        [SerializeField]
-        private CharacterHealth _characterHealth;
-        
         [field: SerializeField] 
         public PhotonView PhotonView { get; private set; }
 
@@ -25,10 +22,12 @@ namespace TapTest
         [field: SerializeField]
         public CharacterCanvasView CharacterCanvasView { get; private set; }
         
+        [field: SerializeField]
+        public CollisionDetector CollisionDetector { get; private set; }
+        
         public void Initialize()
         {
             _characterColor.Initialize();
-            _characterHealth.Initialize();
             CharacterMovement.Initialize();
         }
 
