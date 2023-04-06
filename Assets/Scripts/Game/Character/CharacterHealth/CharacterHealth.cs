@@ -28,15 +28,17 @@ namespace TapTest
         [PunRPC]
         private void TakeDamage(float value)
         {
-            _currentValue -= value;
-            Debug.Log(_currentValue);
-            if (_currentValue <= 0)
+            if (PhotonView.IsMine)
             {
-                _gamePhotonService.LeaveRoom();
-            }
+                _currentValue -= value;
+                if (_currentValue <= 0)
+                {
+                    _gamePhotonService.LeaveRoom();
+                }
 
-            PhotonView.RPC("UpdateHealthBar", RpcTarget.AllBuffered, _maxValue, 
-                _currentValue);
+                PhotonView.RPC("UpdateHealthBar", RpcTarget.AllBuffered, _maxValue, 
+                    _currentValue);
+            }
         }
         
         [PunRPC]
