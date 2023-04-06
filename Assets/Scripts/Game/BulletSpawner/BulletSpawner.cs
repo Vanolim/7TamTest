@@ -35,7 +35,7 @@ namespace TapTest
             }
             else
             {
-                Object.Destroy(bullet);
+                Object.Destroy(bullet.gameObject);
             }
         }
     }
