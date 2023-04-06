@@ -24,6 +24,7 @@ namespace TapTest
 
         public void UpdateHealthBar(float maxHealth, float currentHealth)
         {
+            Debug.Log($"{maxHealth} -- {currentHealth}");
             _image.fillAmount = currentHealth / maxHealth;
         }
     }
