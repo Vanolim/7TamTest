@@ -38,23 +38,9 @@ namespace TapTest
         //     }
         // }
 
-        public void Activate()
-        {
-            gameObject.SetActive(true);
-            //PhotonView.RPC("RPC_Activate", RpcTarget.OthersBuffered);
-        }
-
-        public void Deactivate()
-        {
-            gameObject.SetActive(false);
-            //PhotonView.RPC("RPC_Deactivate", RpcTarget.OthersBuffered);
-        }
-
-        [PunRPC]
-        private void RPC_Activate() => gameObject.SetActive(true);
+        public void Activate() => gameObject.SetActive(true);
         
-        [PunRPC]
-        private void RPC_Deactivate() => gameObject.SetActive(false);
+        public void Deactivate() => gameObject.SetActive(false);
 
         public void Initialize(BulletSetting bulletSetting)
         {

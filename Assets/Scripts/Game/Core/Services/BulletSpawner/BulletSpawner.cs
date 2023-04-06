@@ -20,7 +20,6 @@ namespace TapTest
                 .GetComponent<Bullet>();
 
             InitBullet(bullet, spawnPosition);
-            //_gamePhotonService.RegisterBullet(bullet);
             bullet.OnDestroyed += RemoveBullet;
         }
 
