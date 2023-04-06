@@ -84,7 +84,7 @@ namespace TapTest
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions
                 {
                     Receivers = ReceiverGroup.Others,
-                    CachingOption = EventCaching.AddToRoomCache
+                    CachingOption = EventCaching.DoNotCache
                 };
 
                 SendOptions sendOptions = new SendOptions()

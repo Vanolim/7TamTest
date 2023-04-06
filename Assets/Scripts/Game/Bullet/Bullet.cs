@@ -25,13 +25,24 @@ namespace TapTest
                 damageable.TakeDamage(_damage);
             }
             
-            PhotonView.RPC(" RPC_Destroy", RpcTarget.Others);
-            if(PhotonView.IsMine)
+            if (PhotonView.IsMine)
+            {
                 Destroy(gameObject);
+            }
+            else
+            {
+                PhotonView.RPC(" RPC_Destroy", RpcTarget.Others);
+            }
         }
         
         [PunRPC]
-        private void RPC_Destroy() => Destroy(gameObject);
+        private void RPC_Destroy()
+        {
+            if (PhotonView.IsMine)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         public void Activate() => gameObject.SetActive(true);
         public void Deactivate() => gameObject.SetActive(false);
