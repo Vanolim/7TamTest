@@ -31,7 +31,15 @@ namespace TapTest
             OnDestroyed?.Invoke(this);
         }
 
-        public void Activate() => gameObject.SetActive(true);
+        public void Activate()
+        {
+            gameObject.SetActive(true);
+            PhotonView.RPC("RPC_Activate", RpcTarget.Others);
+        }
+
+        [PunRPC]
+        private void RPC_Activate() => gameObject.SetActive(true);
+
         public void Deactivate() => gameObject.SetActive(false);
     }
 }
