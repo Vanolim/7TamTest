@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 7588654627701332577}
   - component: {fileID: 3694226127250019653}
   - component: {fileID: 2084701806271746565}
+  - component: {fileID: 1970899642704925898}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterColor: {fileID: 7588654627701332577}
-  _characterHealthView: {fileID: 526358346282014327}
+  _characterHealth: {fileID: 1970899642704925898}
   <PhotonView>k__BackingField: {fileID: 7437953238945728695}
   <CharacterMovement>k__BackingField: {fileID: 2084701806271746565}
   <CharacterGun>k__BackingField: {fileID: 3694226127250019653}
@@ -257,6 +258,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 8464074331777256125}
+--- !u!114 &1970899642704925898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039554934206406082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd56dba5ed64f51a7e97ef6bd0948d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterHealthView: {fileID: 526358346282014327}
 --- !u!1 &4216776166227436164
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +834,10 @@ PrefabInstance:
     - target: {fileID: 5044522021688951819, guid: 62497d9f9ea4b4df49778ff30e8baad5, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324302261182850766, guid: 62497d9f9ea4b4df49778ff30e8baad5, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62497d9f9ea4b4df49778ff30e8baad5, type: 3}

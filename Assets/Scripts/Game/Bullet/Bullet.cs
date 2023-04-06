@@ -8,11 +8,24 @@ namespace TapTest
     {
         [field: SerializeField]
         public PhotonView PhotonView { get; private set; }
+
+        [SerializeField]
+        private float _damage;
         
         public void SetPosition(Transform position)
         {
             transform.position = position.position;
             transform.up = position.up;
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(_damage);
+            }
+            
+            Destroy(gameObject);
         }
 
         public void Activate() => gameObject.SetActive(true);

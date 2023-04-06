@@ -13,5 +13,8 @@ namespace TapTest
         
         [field: SerializeField]
         public float GunReloadTime { get; private set; }
+        
+        [field: SerializeField]
+        public float InitHealth { get; private set; }
     }
 }

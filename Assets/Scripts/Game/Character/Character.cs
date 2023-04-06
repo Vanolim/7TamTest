@@ -9,9 +9,9 @@ namespace TapTest
     {
         [SerializeField]
         private CharacterColor _characterColor;
-        
+
         [SerializeField]
-        private CharacterHealthView _characterHealthView;
+        private CharacterHealth _characterHealth;
         
         [field: SerializeField] 
         public PhotonView PhotonView { get; private set; }
@@ -25,6 +25,7 @@ namespace TapTest
         public void Initialize()
         {
             _characterColor.Initialize();
+            _characterHealth.Initialize();
         }
 
         public void Activate() => gameObject.SetActive(true);

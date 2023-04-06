@@ -112,7 +112,7 @@ namespace TapTest
             {
                 object[] data = (object[])photonEvent.CustomData;
 
-                Bullet bullet = Instantiate(_prefab, (Vector3)data[0], (Quaternion)data[1])
+                Bullet bullet = Instantiate(_bullet, (Vector3)data[0], (Quaternion)data[1])
                     .GetComponent<Bullet>();
                 bullet.PhotonView.ViewID = (int)data[2];
             }
