@@ -8,9 +8,6 @@ namespace TapTest
     public class CharacterHealthView : MonoBehaviour
     {
         [SerializeField]
-        private PhotonView _photonView;
-        
-        [SerializeField]
         private Transform _pivot;
         
         [SerializeField]
@@ -19,21 +16,11 @@ namespace TapTest
         private void LateUpdate()
         {
             UpdateHealthViewTransform();
-            
-            // _photonView.RPC("RPC_UpdateHeathBarTransform", RpcTarget.Others, 
-            //     transform.position);
         }
 
         private void UpdateHealthViewTransform()
         {
             transform.position = _pivot.position;
-            transform.rotation = Quaternion.identity;
-        }
-
-        [PunRPC]
-        private void RPC_UpdateHeathBarTransform(Vector3 position)
-        {
-            transform.position = position;
             transform.rotation = Quaternion.identity;
         }
 
