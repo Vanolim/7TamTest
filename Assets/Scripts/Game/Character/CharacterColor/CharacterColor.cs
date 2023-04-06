@@ -1,5 +1,6 @@
 using Photon.Pun;
 using UnityEngine;
+using Zenject;
 
 namespace TapTest
 {
@@ -8,10 +9,17 @@ namespace TapTest
     {
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
-        
+
+        private CharacterSetting CharacterSetting;
         private PhotonView _photonView;
         private Color _color;
 
+        [Inject]
+        private void Construct(CharacterSetting characterSetting)
+        {
+            CharacterSetting = characterSetting;
+        }
+        
         private void SetRandomColor()
         {
             _color = Random.ColorHSV();
@@ -29,6 +37,7 @@ namespace TapTest
         {
             _photonView = GetComponent<PhotonView>();
             SetRandomColor();
+            Debug.Log(CharacterSetting.InitHealth);
         }
     }
 }
