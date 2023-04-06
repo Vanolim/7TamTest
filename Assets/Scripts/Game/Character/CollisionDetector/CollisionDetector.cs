@@ -29,6 +29,7 @@ namespace TapTest
 
         private void TryDestroyObject(GameObject gameObject)
         {
+            Debug.Log(PhotonNetwork.IsMasterClient);
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Destroy(gameObject);
