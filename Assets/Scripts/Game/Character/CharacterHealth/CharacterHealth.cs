@@ -44,8 +44,8 @@ namespace TapTest
         [PunRPC]
         private void UpdateHealthBar(float maxValue, float currentValue)
         {
-            Debug.Log("Update");
-            _characterHealthView.UpdateHealthBar(currentValue / maxValue);
+            if(PhotonView.IsMine)
+                _characterHealthView.UpdateHealthBar(currentValue / maxValue);
         }
 
         public void Initialize()
