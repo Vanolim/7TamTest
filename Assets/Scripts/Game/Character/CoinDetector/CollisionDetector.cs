@@ -14,7 +14,7 @@ namespace TapTest
             if (col.TryGetComponent(out Coin coin))
             {
                 OnTakeCoin?.Invoke();
-                PhotonNetwork.Destroy(coin.gameObject);
+                TryDestroyObject(coin.gameObject);
             }
         }
 
@@ -23,7 +23,15 @@ namespace TapTest
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
                 OnTakeDamage?.Invoke(doingDamage.Damage);
-                PhotonNetwork.Destroy(doingDamage.Object);
+                TryDestroyObject(doingDamage.Object);
+            }
+        }
+
+        private void TryDestroyObject(GameObject gameObject)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.Destroy(gameObject);
             }
         }
     }

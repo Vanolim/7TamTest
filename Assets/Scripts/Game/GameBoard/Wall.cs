@@ -9,7 +9,8 @@ namespace TapTest
         {
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
-                PhotonNetwork.Destroy(doingDamage.Object);
+                if(PhotonNetwork.IsMasterClient)
+                    PhotonNetwork.Destroy(doingDamage.Object);
             }
         }
     }
