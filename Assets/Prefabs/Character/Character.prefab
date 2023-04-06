@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd56dba5ed64f51a7e97ef6bd0948d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _photonView: {fileID: 7437953238945728695}
+  <PhotonView>k__BackingField: {fileID: 7437953238945728695}
   _characterHealthView: {fileID: 526358346282014327}
 --- !u!1 &4216776166227436164
 GameObject:
