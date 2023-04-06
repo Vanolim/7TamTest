@@ -26,6 +26,7 @@ namespace TapTest
         {
             _characterColor.Initialize();
             _characterHealth.Initialize();
+            CharacterMovement.Initialize();
         }
 
         public void Activate() => gameObject.SetActive(true);

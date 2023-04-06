@@ -22,9 +22,6 @@ namespace TapTest
             transform.rotation = Quaternion.identity;
         }
 
-        public void UpdateHealthBar(float delta)
-        {
-            _image.fillAmount = delta;
-        }
+        public void UpdateHealthBar(float delta) => _image.fillAmount = delta;
     }
 }

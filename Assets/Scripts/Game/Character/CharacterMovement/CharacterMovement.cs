@@ -4,9 +4,9 @@ using Zenject;
 namespace TapTest
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class CharacterMovement : MonoBehaviour
+    public class CharacterMovement : MonoBehaviour,
+        IInitializable
     {
-        [SerializeField]
         private Rigidbody2D _rb;
 
         private CharacterSetting _characterSetting;
@@ -35,6 +35,11 @@ namespace TapTest
         {
             _rb.MovePosition(GetTargetPosition(direction,dt));
             RotateToTarget(direction, dt);
+        }
+
+        public void Initialize()
+        {
+            _rb = GetComponent<Rigidbody2D>();
         }
     }
 }

@@ -4,10 +4,10 @@ using Zenject;
 
 namespace TapTest
 {
+    [RequireComponent(typeof(PhotonView))]
     public class CharacterHealth : MonoBehaviour,
         IInitializable
     {
-        [field:SerializeField]
         public PhotonView PhotonView { get; private set; }
         
         [SerializeField]
@@ -26,7 +26,7 @@ namespace TapTest
         }
 
         [PunRPC]
-        private void TakeDamage(float value)
+        private void RPC_TakeDamage(float value)
         {
             if (PhotonView.IsMine)
             {
@@ -36,13 +36,13 @@ namespace TapTest
                     _gamePhotonService.LeaveRoom();
                 }
 
-                PhotonView.RPC("UpdateHealthBar", RpcTarget.AllBuffered, _maxValue, 
-                    _currentValue);
+                PhotonView.RPC("RPC_UpdateHealthBar", RpcTarget.AllBuffered, 
+                    _maxValue, _currentValue);
             }
         }
         
         [PunRPC]
-        private void UpdateHealthBar(float maxValue, float currentValue)
+        private void RPC_UpdateHealthBar(float maxValue, float currentValue)
         {
             if(PhotonView.IsMine)
                 _characterHealthView.UpdateHealthBar(currentValue / maxValue);
@@ -50,6 +50,7 @@ namespace TapTest
 
         public void Initialize()
         {
+            PhotonView = GetComponent<PhotonView>();
             _maxValue = _characterSetting.InitHealth;
             _currentValue = _maxValue;
         }

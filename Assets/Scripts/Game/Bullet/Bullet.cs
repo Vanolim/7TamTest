@@ -4,43 +4,60 @@ using UnityEngine;
 
 namespace TapTest
 {
+    [RequireComponent(typeof(PhotonView))]
+    [RequireComponent(typeof(BulletMovement))]
     public class Bullet : MonoBehaviour,
         IActivable
     {
-        [field: SerializeField]
-        public PhotonView PhotonView { get; private set; }
-
-        [SerializeField]
         private float _damage;
+        
+        public PhotonView PhotonView { get; private set; }
 
         public event Action<Bullet> OnDestroyed;
         
-        public void SetPosition(Transform position)
+        public void SetSpawnPoint(Transform point)
         {
-            transform.position = position.position;
-            transform.up = position.up;
+            transform.position = point.position;
+            transform.up = point.up;
         }
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.TryGetComponent(out CharacterHealth characterHealth))
+            if (PhotonView.IsMine)
             {
-                PhotonView pht = characterHealth.PhotonView;
-                pht.RPC("TakeDamage", RpcTarget.AllBuffered, _damage);
-            }
+                if (col.gameObject.TryGetComponent(out CharacterHealth characterHealth))
+                {
+                    PhotonView character = characterHealth.PhotonView;
+                    character.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, _damage);
+                }
             
-            OnDestroyed?.Invoke(this);
+                OnDestroyed?.Invoke(this);
+            }
         }
 
         public void Activate()
         {
             gameObject.SetActive(true);
-            PhotonView.RPC("RPC_Activate", RpcTarget.Others);
+            PhotonView.RPC("RPC_Activate", RpcTarget.OthersBuffered);
+        }
+
+        public void Deactivate()
+        {
+            gameObject.SetActive(false);
+            PhotonView.RPC("RPC_Deactivate", RpcTarget.OthersBuffered);
         }
 
         [PunRPC]
         private void RPC_Activate() => gameObject.SetActive(true);
+        
+        [PunRPC]
+        private void RPC_Deactivate() => gameObject.SetActive(false);
 
-        public void Deactivate() => gameObject.SetActive(false);
+        public void Initialize(BulletSetting bulletSetting)
+        {
+            _damage = bulletSetting.Damage;
+            gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);
+            PhotonView = gameObject.GetComponent<PhotonView>();
+        }
     }
 }

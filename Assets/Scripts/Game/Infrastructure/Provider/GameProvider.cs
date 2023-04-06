@@ -6,10 +6,7 @@ namespace TapTest
     {
         [field: SerializeField]
         public CharacterSetting CharacterSetting { get; private set; }
-        
-        [field: SerializeField] 
-        public Spawner Spawner { get; private set; }
-        
+
         [field: SerializeField]
         public Character Character { get; private set; }
         
@@ -21,11 +18,11 @@ namespace TapTest
         
         [field: SerializeField]
         public GamePhotonService GamePhotonService { get; private set; }
-        
-        [field: SerializeField]
-        public GameBoard GameBoard { get; private set; }
-        
+
         [field: SerializeField]
         public Bullet Bullet { get; private set; }
+        
+        [field: SerializeField]
+        public BulletSetting BulletSetting { get; private set; }
     }
 }

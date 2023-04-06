@@ -47,6 +47,10 @@ MonoBehaviour:
   - RPC_Activate
   - UpdateHealthBar
   - TakeDamage
+  - RPC_Deactivate
+  - RPC_SetColor
+  - RPC_TakeDamage
+  - RPC_UpdateHealthBar
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

@@ -6,22 +6,28 @@ namespace TapTest
 {
     public class BulletSpawner
     {
-        private Bullet _bullet;
-        private GamePhotonService _gamePhotonService;
+        private BulletSetting _bulletSetting;
         
         [Inject]
-        private void Construct(Bullet bullet, GamePhotonService gamePhotonService)
+        private void Construct(BulletSetting bulletSetting)
         {
-            _bullet = bullet;
-            _gamePhotonService = gamePhotonService;
+            _bulletSetting = bulletSetting;
         }
 
         public void Spawn(Transform spawnPosition)
         {
-            Bullet bullet = GameObject.Instantiate(_bullet);
+            Bullet bullet = PhotonNetwork.Instantiate("Bullet", Vector3.zero, Quaternion.identity)
+                .GetComponent<Bullet>();
+
+            InitBullet(bullet, spawnPosition);
+            //_gamePhotonService.RegisterBullet(bullet);
             bullet.OnDestroyed += RemoveBullet;
-            _gamePhotonService.RegisterBullet(bullet);
-            bullet.SetPosition(spawnPosition);
+        }
+
+        private void InitBullet(Bullet bullet, Transform spawnPosition)
+        {
+            bullet.Initialize(_bulletSetting);
+            bullet.SetSpawnPoint(spawnPosition);
             bullet.Activate();
         }
 
