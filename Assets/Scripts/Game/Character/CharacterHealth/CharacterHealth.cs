@@ -24,6 +24,7 @@ namespace TapTest
 
         public void TakeDamage(float value)
         {
+            Debug.Log(_currentValue);
             _currentValue -= value;
             if (_currentValue <= 0)
             {
