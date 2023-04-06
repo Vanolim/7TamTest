@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PhotonView>k__BackingField: {fileID: 5856607884502184231}
+  _damage: 1
 --- !u!114 &2341507154912107449
 MonoBehaviour:
   m_ObjectHideFlags: 0
