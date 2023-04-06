@@ -19,17 +19,9 @@ namespace TapTest
 
         private void Spawn()
         {
-            _character.Activate();
             _gamePhotonService.RegisterCharacter(_character);
-            
-
-            /*DefaultPool pool = PhotonNetwork.PrefabPool as DefaultPool;
-            pool.ResourceCache.Add(_character.name, _character.gameObject);
-            
-            Character character = _spawner.Spawn<Character>(_character.name, GetRandomPosition());
-            character.Initialize();
-            
-            OnSpawn?.Invoke(character);*/
+            _character.Initialize();
+            _character.Activate();
         }
 
         private Vector2 GetRandomPosition() => new(Random.Range(-10, 10), Random.Range(-10, 10));

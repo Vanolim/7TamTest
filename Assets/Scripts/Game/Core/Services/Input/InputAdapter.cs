@@ -37,7 +37,10 @@ namespace TapTest
             }
         }
 
-        private void Shoot() => _characterGun.TryShoot();
+        private void Shoot()
+        {
+            _characterGun.TryShoot();
+        }
 
         public void Initialize()
         {

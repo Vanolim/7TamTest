@@ -1,16 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace TapTest
 {
     public class CharacterGun : MonoBehaviour
     {
-        [SerializeField]
-        private Bullet _bullet;
-        
+        private BulletPool _bulletPool;
         private CharacterSetting _characterSetting;
         private CoroutineService _coroutineService;
-        private bool _isReload;
+        private bool _isReload = true;
+
+        [Inject]
+        private void Construct(BulletPool bulletPool, CharacterSetting characterSetting,
+            CoroutineService coroutineService)
+        {
+            _characterSetting = characterSetting;
+            _bulletPool = bulletPool;
+            _coroutineService = coroutineService;
+        }
 
         private IEnumerator WaitReload()
         {
@@ -21,7 +29,8 @@ namespace TapTest
         private void Shoot()
         {
             _isReload = false;
-            Instantiate(_bullet);
+            Bullet bullet = _bulletPool.Spawn();
+            bullet.Activate();
             _coroutineService.StartCoroutine(WaitReload());
         }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace TapTest
 {
@@ -7,25 +8,27 @@ namespace TapTest
     {
         [SerializeField]
         private Rigidbody2D _rb;
-        
-        [SerializeField]
-        private float _speedMovement;
-        
-        [SerializeField]
-        private float _speedRotation;
+
+        private CharacterSetting _characterSetting;
+
+        [Inject]
+        private void Construct(CharacterSetting characterSetting)
+        {
+            _characterSetting = characterSetting;
+        }
 
         private Vector3 GetTargetPosition(Vector2 direction, float dt)
         {
             float directionMagnitude = Mathf.Clamp01(direction.magnitude);
             return transform.position +
-                   (Vector3)direction * directionMagnitude * _speedMovement * dt;
+                   (Vector3)direction * directionMagnitude * _characterSetting.MovementSpeed * dt;
         }
 
         private void RotateToTarget(Vector2 direction, float dt)
         {
             Quaternion toRotate = Quaternion.LookRotation(Vector3.forward, direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, 
-                _speedRotation * dt);
+                _characterSetting.RotationSpeed * dt);
         }
 
         public void Move(Vector2 direction, float dt)

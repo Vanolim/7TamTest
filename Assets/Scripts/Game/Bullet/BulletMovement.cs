@@ -13,8 +13,12 @@ namespace TapTest
 
         private void FixedUpdate()
         {
-            _rb.MovePosition(
-                transform.position + Vector3.forward * _speed * Time.fixedDeltaTime);
+            Move();
         }
+
+        private void Move() => _rb.MovePosition(_rb.transform.localPosition +
+                                                GetTargetDirection() * _speed * Time.fixedDeltaTime);
+
+        private Vector3 GetTargetDirection() => transform.TransformDirection(Vector3.up);
     }
 }

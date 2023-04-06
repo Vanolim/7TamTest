@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01685488621d48f9b5ba2375b2f52581, type: 3}
   m_Name: CharacterSetting
   m_EditorClassIdentifier: 
-  <GunReloadTime>k__BackingField: 0
+  <MovementSpeed>k__BackingField: 5
+  <RotationSpeed>k__BackingField: 800
+  <GunReloadTime>k__BackingField: 1

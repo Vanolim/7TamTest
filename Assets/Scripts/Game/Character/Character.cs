@@ -10,6 +10,9 @@ namespace TapTest
         [SerializeField]
         private CharacterColor _characterColor;
         
+        [SerializeField]
+        private CharacterHealthView _characterHealthView;
+        
         [field: SerializeField] 
         public PhotonView PhotonView { get; private set; }
 

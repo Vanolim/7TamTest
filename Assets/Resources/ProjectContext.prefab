@@ -76,6 +76,7 @@ Transform:
   m_Children:
   - {fileID: 1196094371187425254}
   - {fileID: 4643923030121215254}
+  - {fileID: 1719500559225717971}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95,6 +96,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 4148856475705671665}
   - {fileID: 2189916303687795258}
+  - {fileID: 3752495548615782488}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -155,3 +157,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _corePrefab: {fileID: 4799062105486723535, guid: 44df8be87fffd4377b0a53ec43728e12, type: 3}
   _sceneLoaderView: {fileID: 5807553473389585859, guid: 7e2bf98e78f0943c9b4c84b62b1807a4, type: 3}
+--- !u!1 &5590922767149173734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719500559225717971}
+  - component: {fileID: 3752495548615782488}
+  m_Layer: 0
+  m_Name: CoroutineService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1719500559225717971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5590922767149173734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7625434430228358514}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3752495548615782488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5590922767149173734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f344da6172e3c41589c197ab926f4098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
