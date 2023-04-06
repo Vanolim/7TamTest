@@ -92,7 +92,7 @@ namespace TapTest
                     Reliability = true
                 };
 
-                PhotonNetwork.RaiseEvent(CharacterSpawnEventCode, data, raiseEventOptions, sendOptions);
+                PhotonNetwork.RaiseEvent(BulletSpawnEventCode, data, raiseEventOptions, sendOptions);
             }
             else
             {
