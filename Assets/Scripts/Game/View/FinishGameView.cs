@@ -44,7 +44,7 @@ namespace TapTest
             EntryTemplate entry = Instantiate(_entryTemplate, _entryContainer)
                 .GetComponent<EntryTemplate>();
             
-            entry.SetParametrs(name, dataCoins, i.ToString());
+            entry.SetParametrs(name, dataCoins, (i + 1).ToString());
                 
             RectTransform entryRectTransform = entry.GetComponent<RectTransform>();
             entryRectTransform.anchoredPosition = new Vector2(0, -_templateHeight * i);
