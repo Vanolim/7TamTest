@@ -44,6 +44,7 @@ namespace TapTest
             {
                 Character[] characters = Object.FindObjectsOfType<Character>(false);
                 int countActiveCharacters = characters.Count(x => x.isActiveAndEnabled);
+                Debug.Log(countActiveCharacters);
 
                 if(countActiveCharacters == 1)
                     characters[0].Died();
