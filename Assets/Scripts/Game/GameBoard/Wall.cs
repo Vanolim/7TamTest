@@ -1,4 +1,3 @@
-using Photon.Pun;
 using UnityEngine;
 
 namespace TapTest
@@ -9,8 +8,7 @@ namespace TapTest
         {
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
-                if(PhotonNetwork.IsMasterClient)
-                    PhotonNetwork.Destroy(doingDamage.Object);
+                doingDamage.Destroy();
             }
         }
     }

@@ -23,13 +23,11 @@ namespace TapTest
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
                 OnTakeDamage?.Invoke(doingDamage.Damage);
-                TryDestroyObject(doingDamage.Object);
             }
         }
 
         private void TryDestroyObject(GameObject gameObject)
         {
-            Debug.Log(PhotonNetwork.IsMasterClient);
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Destroy(gameObject);

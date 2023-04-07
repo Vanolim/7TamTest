@@ -6,5 +6,6 @@ namespace TapTest
     {
         public float Damage { get; }
         public GameObject Object { get; }
+        public void Destroy();
     }
 }

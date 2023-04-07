@@ -42,6 +42,12 @@ namespace TapTest
         
         public void Deactivate() => gameObject.SetActive(false);
 
+        public void Destroy()
+        {
+            Deactivate();
+            OnDestroyed?.Invoke(this);
+        }
+
         public void Initialize(BulletSetting bulletSetting)
         {
             Damage = bulletSetting.Damage;
