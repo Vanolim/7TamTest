@@ -23,6 +23,7 @@ namespace TapTest
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
                 OnTakeDamage?.Invoke(doingDamage.Damage);
+                doingDamage.Destroy();
             }
         }
 
