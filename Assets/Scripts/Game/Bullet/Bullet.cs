@@ -52,6 +52,7 @@ namespace TapTest
         {
             gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);
             _damage = bulletSetting.Damage;
+            Debug.Log($"{_damage} -- {Damage}");
         }
     }
 }
