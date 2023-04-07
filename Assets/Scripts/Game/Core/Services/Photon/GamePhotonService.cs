@@ -33,8 +33,7 @@ namespace TapTest
             PhotonView photonView = character.PhotonView;
             if (PhotonNetwork.AllocateViewID(photonView))
             {
-                object[] data = new object[]
-                {
+                object[] data = {
                     character.transform.position, character.transform.rotation, photonView.ViewID
                 };
 
@@ -80,6 +79,7 @@ namespace TapTest
 
         public void CharacterDie()
         {
+            Debug.Log("444444444444444444");
             _inputAdapter.Deactivate();
             SendMessageCharacterData();
         }

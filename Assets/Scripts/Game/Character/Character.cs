@@ -24,9 +24,6 @@ namespace TapTest
         public CharacterGun CharacterGun { get; private set; }
 
         [field: SerializeField]
-        public CharacterCanvasView CharacterCanvasView { get; private set; }
-
-        [field: SerializeField]
         public CollisionDetector CollisionDetector { get; private set; }
 
         [field: SerializeField]

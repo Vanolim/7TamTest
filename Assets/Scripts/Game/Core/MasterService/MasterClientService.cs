@@ -53,6 +53,7 @@ namespace TapTest
 
         private void FinishGame()
         {
+            Debug.Log("Finish");
             _higscoresService.SetData(_deadCharacterDats.ToArray());
             _higscoresService.ActivateView();
             _coroutineService.StartCoroutine(WaitLoadLobby());
