@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace TapTest
@@ -7,14 +6,15 @@ namespace TapTest
     {
         private ServerClient _serverClient;
         private SceneLoader _sceneLoader;
-
-        private const float _waitLoadScene = 1f;
+        private float _waitLoadScene;
 
         [Inject]
-        private void Construct(ServerClient serverClient, SceneLoader sceneLoader)
+        private void Construct(ServerClient serverClient, SceneLoader sceneLoader,
+            GameSetting gameSetting)
         {
             _serverClient = serverClient;
             _sceneLoader = sceneLoader;
+            _waitLoadScene = gameSetting.WaitBootstrapperScene;
 
             _serverClient.OnConnect += LoadLobby;
         }

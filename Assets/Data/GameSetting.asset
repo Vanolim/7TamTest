@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd7d6e10ee34715b9c24c2da7e9aefd, type: 3}
   m_Name: GameSetting
   m_EditorClassIdentifier: 
-  <CountCoins>k__BackingField: 20
+  <CountCoins>k__BackingField: 60
   <MinCountActivateGame>k__BackingField: 2
+  <WaitBootstrapperScene>k__BackingField: 2
+  <WaitFinishedLoadLobby>k__BackingField: 4

@@ -6,19 +6,21 @@ namespace TapTest
     public class EntryTemplate : MonoBehaviour
     {
         [SerializeField]
-        private TMP_Text _name;
+        private TMP_Text _playerName;
         
         [SerializeField]
-        private TMP_Text _score;
+        private TMP_Text _countCoins;
         
         [SerializeField]
         private TMP_Text _pos;
 
-        public void SetParametrs(string name, string score, string pos)
+        public void SetParameters(string playerName, string score, string position)
         {
-            _pos.text = pos;
-            _name.text = name;
-            _score.text = score;
+            _pos.text = position;
+            _countCoins.text = score;
+
+            if(playerName != "")
+                _playerName.text = playerName;
         }
     }
 }

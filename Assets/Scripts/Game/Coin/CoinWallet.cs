@@ -19,8 +19,7 @@ namespace TapTest
         private void Add()
         {
             Value++;
-            _character.PhotonView.RPC("RPC_UpdateCoinWalletView", RpcTarget.AllBuffered, 
-                Value);
+            _character.PhotonView.RPC("RPC_UpdateCoinWalletView", RpcTarget.AllBuffered, Value);
         }
 
         public void Dispose()

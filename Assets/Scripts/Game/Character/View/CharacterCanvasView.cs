@@ -30,9 +30,7 @@ namespace TapTest
         }
 
         public void UpdateHealthBar(float delta) => _health.fillAmount = delta;
-
-        public void UpdateCoinWallet(int value) => _coin.text = value.ToString();
-        
-        public void UpdatePlayerName(string name) => _name.text = name;
+        public void UpdateCoinWallet(int coinValue) => _coin.text = coinValue.ToString();
+        public void UpdatePlayerName(string playerName) => _name.text = playerName;
     }
 }

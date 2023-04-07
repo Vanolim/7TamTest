@@ -8,7 +8,7 @@ namespace TapTest
     public class LobbyCreatorView : MonoBehaviour
     {
         [SerializeField]
-        private  TMP_InputField _roomName;
+        private TMP_InputField _roomName;
 
         [SerializeField]
         private Button _createRoom;
@@ -19,7 +19,6 @@ namespace TapTest
         {
             if (_roomName.text == "")
             {
-                Debug.Log("Error");
                 return;
             }
             

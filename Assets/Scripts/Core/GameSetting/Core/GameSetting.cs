@@ -10,5 +10,12 @@ namespace TapTest
         
         [field: SerializeField] 
         public int MinCountActivateGame { get; private set; }
+        
+        [field: SerializeField] 
+        public float WaitBootstrapperScene { get; private set; }
+        
+        
+        [field: SerializeField] 
+        public float WaitFinishedLoadLobby { get; private set; }
     }
 }

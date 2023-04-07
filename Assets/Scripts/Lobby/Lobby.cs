@@ -22,30 +22,42 @@ namespace TapTest
         
         private void CreateRoom(string roomName)
         {
-            PhotonNetwork.NickName = _lobbyUIContext.LobbyNameView.PlayerName.text;
-            PhotonNetwork.AutomaticallySyncScene = true;
-            PhotonNetwork.ConnectUsingSettings();
-            _roomOptions = new RoomOptions();
-            _photonService.CreateRoom(roomName, _roomOptions);
+            if (IsPlayerNameEnter(out string playerName))
+            {
+                PhotonNetwork.NickName = playerName;
+                PhotonNetwork.AutomaticallySyncScene = true;
+                PhotonNetwork.ConnectUsingSettings();
+                _roomOptions = new RoomOptions();
+                _photonService.CreateRoom(roomName, _roomOptions);
+            }
         }
 
-        private void JoinRoom(string roomName)
+        private void JoinRoomRoom(string roomName)
         {
-            PhotonNetwork.NickName = _lobbyUIContext.LobbyNameView.PlayerName.text;
-            PhotonNetwork.ConnectUsingSettings();
-            _photonService.JoinRoom(roomName);
+            if (IsPlayerNameEnter(out string playerName))
+            {
+                PhotonNetwork.NickName = playerName;
+                PhotonNetwork.ConnectUsingSettings();
+                _photonService.JoinRoom(roomName);
+            }
+        }
+
+        private bool IsPlayerNameEnter(out string playerName)
+        {
+            playerName = _lobbyUIContext.LobbyNameView.PlayerName.text;
+            return playerName != "";
         }
 
         public void Initialize()
         {
             _lobbyUIContext.LobbyCreatorView.OnCreate += CreateRoom;
-            _lobbyUIContext.LobbyJoinView.OnJoin += JoinRoom;
+            _lobbyUIContext.LobbyJoinView.OnJoinRoom += JoinRoomRoom;
         }
 
         public void Dispose()
         {
             _lobbyUIContext.LobbyCreatorView.OnCreate -= CreateRoom;
-            _lobbyUIContext.LobbyJoinView.OnJoin -= JoinRoom;
+            _lobbyUIContext.LobbyJoinView.OnJoinRoom -= JoinRoomRoom;
         }
     }
 }

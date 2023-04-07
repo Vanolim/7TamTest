@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AAA
+  m_text: None
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55dfe8117c514840af2c23fe91a89acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: {fileID: 2075573967977461693}
-  _score: {fileID: 8856615317795469417}
+  _playerName: {fileID: 2075573967977461693}
+  _countCoins: {fileID: 8856615317795469417}
   _pos: {fileID: 5175109540978674535}
 --- !u!1 &4772204624769627811
 GameObject:

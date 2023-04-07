@@ -11,11 +11,10 @@ namespace TapTest
         IOnEventCallback
     {
         [SerializeField]
-        private Character _prefab;
+        private Character _characterPrefab;
 
         private CoinWallet _coinWallet;
         private InputAdapter _inputAdapter;
-        private FinishGameView _finishGameView;
 
         private const byte CharacterSpawnEventCode = 1;
         private const byte MessageCharacterDeadEventCode = 2;
@@ -64,7 +63,7 @@ namespace TapTest
             {
                 object[] data = (object[])photonEvent.CustomData;
 
-                Character character = Instantiate(_prefab, (Vector3)data[0], (Quaternion)data[1])
+                Character character = Instantiate(_characterPrefab, (Vector3)data[0], (Quaternion)data[1])
                     .GetComponent<Character>();
                 character.PhotonView.ViewID = (int)data[2];
             }

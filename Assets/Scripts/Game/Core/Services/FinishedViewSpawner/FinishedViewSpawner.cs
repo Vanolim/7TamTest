@@ -5,8 +5,8 @@ namespace TapTest
 {
     public class FinishedViewSpawner
     {
-        public FinishGameView Spawn() =>
+        public HigscoresView Spawn() =>
             PhotonNetwork.Instantiate("FinishGameView", Vector3.zero, Quaternion.identity)
-                .GetComponent<FinishGameView>();
+                .GetComponent<HigscoresView>();
     }
 }

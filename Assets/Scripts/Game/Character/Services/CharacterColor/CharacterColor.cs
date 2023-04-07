@@ -19,9 +19,7 @@ namespace TapTest
             _photonView.RPC("RPC_SetColor", RpcTarget.AllBuffered, 
                 new Vector3(_color.r, _color.g, _color.b));
         }
-
-        private float GetRandomValue() => Random.Range(0f, 1f);
-
+        
         [PunRPC]
         private void RPC_SetColor(Vector3 color) => 
             _spriteRenderer.color = new Color(color.x, color.y, color.z);

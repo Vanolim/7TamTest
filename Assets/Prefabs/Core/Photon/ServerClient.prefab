@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7120393297366180025}
   - component: {fileID: 2705353998985327560}
   m_Layer: 0
-  m_Name: ServerClien
+  m_Name: ServerClient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

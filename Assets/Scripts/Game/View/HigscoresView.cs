@@ -1,15 +1,13 @@
-using System;
 using Photon.Pun;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace TapTest
 {
-    public class FinishGameView : MonoBehaviour,
+    public class HigscoresView : MonoBehaviour,
         IActivable
     {
-        [field:SerializeField]
-        public PhotonView PhotonView;
+        [SerializeField]
+        private PhotonView _photonView;
         
         [SerializeField]
         private EntryTemplate _entryTemplate;
@@ -20,17 +18,12 @@ namespace TapTest
         [SerializeField]
         private float _templateHeight;
 
-        public void Test(string name, string dataCoins, int i)
-        {
-            PhotonView.RPC("RPC_Init", RpcTarget.AllBuffered, name, dataCoins, i);
-        }
+        public void Test(string name, string dataCoins, int i) => 
+            _photonView.RPC("RPC_AddTemplate", RpcTarget.AllBuffered, name, dataCoins, i);
 
-        public void Activate()
-        {
-            PhotonView.RPC("RPC_Activate", RpcTarget.AllBuffered);
-        }
+        public void Activate() => _photonView.RPC("RPC_Activate", RpcTarget.AllBuffered);
 
-        public void Deactivate() => PhotonView.RPC("RPC_Deactivate", RpcTarget.AllBuffered);
+        public void Deactivate() => _photonView.RPC("RPC_Deactivate", RpcTarget.AllBuffered);
 
         [PunRPC]
         private void RPC_Activate() => gameObject.SetActive(true);
@@ -39,15 +32,15 @@ namespace TapTest
         private void RPC_Deactivate() => gameObject.SetActive(false);
 
         [PunRPC]
-        private void RPC_Init(string name, string dataCoins, int i)
+        private void RPC_AddTemplate(string name, string dataCoins, int pos)
         {
             EntryTemplate entry = Instantiate(_entryTemplate, _entryContainer)
                 .GetComponent<EntryTemplate>();
             
-            entry.SetParametrs(name, dataCoins, (i + 1).ToString());
+            entry.SetParameters(name, dataCoins, (pos + 1).ToString());
                 
             RectTransform entryRectTransform = entry.GetComponent<RectTransform>();
-            entryRectTransform.anchoredPosition = new Vector2(0, -_templateHeight * i);
+            entryRectTransform.anchoredPosition = new Vector2(0, -_templateHeight * pos);
         }
     }
 }

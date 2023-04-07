@@ -11,6 +11,9 @@ namespace TapTest
     {
         [field:SerializeField]
         public PhotonView PhotonView { get; private set; }
+
+        [SerializeField]
+        private BulletMovement _bulletMovement;
         
         private float _damage;
 
@@ -47,7 +50,7 @@ namespace TapTest
 
         public void Initialize(BulletSetting bulletSetting)
         {
-            gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);
+            _bulletMovement.Initialize(bulletSetting.SpeedMovement);
             _damage = bulletSetting.Damage;
         }
     }

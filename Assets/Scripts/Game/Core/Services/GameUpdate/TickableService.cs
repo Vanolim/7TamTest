@@ -20,6 +20,18 @@ namespace TapTest
             }
         }
 
+        public void Remove(ITickable tickable)
+        {
+            if (tickable is IFixedTickable fixedTickable)
+            {
+                _fixedTickables.Remove(fixedTickable);
+            }
+            else
+            {
+                _tickables.Remove(tickable);
+            }
+        }
+
         private void Update()
         {
             for (int i = 0; i < _tickables.Count; i++)

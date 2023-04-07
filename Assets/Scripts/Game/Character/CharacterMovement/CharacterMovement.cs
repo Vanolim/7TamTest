@@ -8,7 +8,6 @@ namespace TapTest
         IInitializable
     {
         private Rigidbody2D _rb;
-
         private CharacterSetting _characterSetting;
 
         [Inject]

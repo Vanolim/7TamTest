@@ -28,12 +28,14 @@ namespace TapTest
         {
             _isCheck = false;
             _inputAdapter.Activate();
+            _tickableService.Remove(this);
         }
 
         private void Deactivate()
         {
             _isCheck = true;
             _inputAdapter.Deactivate();
+            _tickableService.Add(this);
         }
         
         public void Tick(float dt)

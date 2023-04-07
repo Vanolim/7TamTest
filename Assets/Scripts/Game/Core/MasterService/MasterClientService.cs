@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 using Zenject;
@@ -9,31 +8,36 @@ using Object = UnityEngine.Object;
 
 namespace TapTest
 {
-    public class MasterClientService : IDisposable
+    public class MasterClientService : IDisposable,
+        IInitializable
     {
         private GamePhotonService _gamePhotonService;
-        private FinishGameView _finishGameView;
+        private LobbyPhotonService _lobbyPhotonService;
+        private HigscoresService _higscoresService;
         private CoroutineService _coroutineService;
+        private float _waitFinishedLoadLobbyValue;
+
         private readonly List<CharacterData> _deadCharacterDats = new();
 
         [Inject]
-        private void Construct(GamePhotonService gamePhotonService,
-            FinishGameView finishGameView, CoroutineService coroutineService)
+        private void Construct(GamePhotonService gamePhotonService, HigscoresService higscoresService, 
+            CoroutineService coroutineService, LobbyPhotonService lobbyPhotonService,
+            GameSetting gameSetting)
         {
             _gamePhotonService = gamePhotonService;
-            _finishGameView = finishGameView;
+            _higscoresService = higscoresService;
             _coroutineService = coroutineService;
-            _gamePhotonService.OnCharacterDied += AddDiedCharacter;
-            _finishGameView.Deactivate();
+            _lobbyPhotonService = lobbyPhotonService;
+            _waitFinishedLoadLobbyValue = gameSetting.WaitBootstrapperScene;
         }
 
-        private void AddDiedCharacter(CharacterData characterData)
+        private void AddDeadCharacter(CharacterData characterData)
         {
             _deadCharacterDats.Add(characterData);
-            TryFinished();
+            TryGameFinished();
         }
 
-        private void TryFinished()
+        private void TryGameFinished()
         {
             if (_deadCharacterDats.Count < PhotonNetwork.CurrentRoom.Players.Count)
             {
@@ -49,31 +53,26 @@ namespace TapTest
 
         private void FinishGame()
         {
-            SetData();
-            _finishGameView.Activate();
-            _coroutineService.StartCoroutine(Wait());
+            _higscoresService.SetData(_deadCharacterDats.ToArray());
+            _higscoresService.ActivateView();
+            _coroutineService.StartCoroutine(WaitLoadLobby());
         }
 
-        private IEnumerator Wait()
+        private IEnumerator WaitLoadLobby()
         {
-            yield return new WaitForSeconds(5);
-            PhotonNetwork.LoadLevel("Lobby");
-        }
-
-        private void SetData()
-        {
-            CharacterData[] sortDeadCharacterDats = 
-                _deadCharacterDats.OrderByDescending(x => x.CountCoins).ToArray();
-
-            for (int i = 0; i < sortDeadCharacterDats.Length; i++)
-            {
-                _finishGameView.Test(sortDeadCharacterDats[i].Name, sortDeadCharacterDats[i].CountCoins.ToString(), i);
-            }
+            yield return new WaitForSeconds(_waitFinishedLoadLobbyValue);
+            _lobbyPhotonService.LoadLobby();
         }
 
         public void Dispose()
         {
-            _gamePhotonService.OnCharacterDied -= AddDiedCharacter;
+            _gamePhotonService.OnCharacterDied -= AddDeadCharacter;
+        }
+
+        public void Initialize()
+        {
+            _gamePhotonService.OnCharacterDied += AddDeadCharacter;
+            _higscoresService.DeactivateView();
         }
     }
 }
