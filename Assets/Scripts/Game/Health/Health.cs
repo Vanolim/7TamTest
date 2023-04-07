@@ -30,6 +30,7 @@ namespace TapTest
             if (_currentValue <= 0)
             {
                 DiedCharacter();
+                _character.Died();
             }
             
             _character.PhotonView.RPC("RPC_UpdateHealthBar", RpcTarget.AllBuffered, 
@@ -38,7 +39,6 @@ namespace TapTest
 
         private void DiedCharacter()
         {
-            _character.Died();
             _character.Deactivate();
             _gamePhotonService.CharacterDie();
         }

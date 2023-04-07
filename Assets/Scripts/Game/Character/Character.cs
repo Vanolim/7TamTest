@@ -38,6 +38,7 @@ namespace TapTest
 
         private void TryDied()
         {
+            Debug.Log($"{_countDiedCharacters} -- {PhotonNetwork.CurrentRoom.Players.Count}");
             if (_countDiedCharacters + 1 >= PhotonNetwork.CurrentRoom.Players.Count)
             {
                 OnDiedLast?.Invoke();
