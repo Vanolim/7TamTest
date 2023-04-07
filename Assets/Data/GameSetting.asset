@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GameSetting
   m_EditorClassIdentifier: 
   <CountCoins>k__BackingField: 20
+  <MinCountActivateGame>k__BackingField: 2

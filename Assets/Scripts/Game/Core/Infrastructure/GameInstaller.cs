@@ -19,6 +19,7 @@ namespace TapTest
             BindPrefab(_gameProvider.GamePhotonService);
             BindInstance(_gameProvider.CharacterSetting);
             BindInstance(_gameProvider.GameSetting);
+            BindInstance(new CountPlayersChecker());
             BindPrefab(_gameProvider.GameBoard);
             BindInstance(_gameProvider.BulletSetting);
             BindInstance(new CoinSpawner());
@@ -31,6 +32,11 @@ namespace TapTest
             
             BindPrefab(_gameProvider.TickableService);
             BindPrefab(_gameProvider.InputPanel);
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                BindInstance(new MasterService());
+            }
 
             this.BindThis(Container, this);
         }

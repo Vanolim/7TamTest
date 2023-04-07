@@ -15,6 +15,9 @@ namespace TapTest
         [SerializeField]
         private TMP_Text _coin;
         
+        [SerializeField]
+        private TMP_Text _name;
+        
         private void LateUpdate()
         {
             UpdateHealthViewTransform();
@@ -29,5 +32,7 @@ namespace TapTest
         public void UpdateHealthBar(float delta) => _health.fillAmount = delta;
 
         public void UpdateCoinWallet(int value) => _coin.text = value.ToString();
+        
+        public void UpdatePlayerName(string name) => _name.text = name;
     }
 }

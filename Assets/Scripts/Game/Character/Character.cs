@@ -9,6 +9,9 @@ namespace TapTest
     {
         [SerializeField]
         private CharacterColor _characterColor;
+        
+        [SerializeField]
+        private CharacterName _characterName;
 
         [field: SerializeField] 
         public PhotonView PhotonView { get; private set; }
@@ -31,6 +34,7 @@ namespace TapTest
         public void Initialize()
         {
             _characterColor.Initialize();
+            _characterName.Initialize();
             CharacterMovement.Initialize();
         }
 

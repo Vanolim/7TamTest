@@ -7,5 +7,8 @@ namespace TapTest
     {
         [field: SerializeField] 
         public int CountCoins { get; private set; }
+        
+        [field: SerializeField] 
+        public int MinCountActivateGame { get; private set; }
     }
 }

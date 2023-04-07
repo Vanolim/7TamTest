@@ -1,4 +1,5 @@
 using System;
+using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using Zenject;
@@ -21,12 +22,16 @@ namespace TapTest
         
         private void CreateRoom(string roomName)
         {
+            PhotonNetwork.NickName = _lobbyUIContext.LobbyNameView.PlayerName.text;
+            PhotonNetwork.ConnectUsingSettings();
             _roomOptions = new RoomOptions();
             _photonService.CreateRoom(roomName, _roomOptions);
         }
 
         private void JoinRoom(string roomName)
         {
+            PhotonNetwork.NickName = _lobbyUIContext.LobbyNameView.PlayerName.text;
+            PhotonNetwork.ConnectUsingSettings();
             _photonService.JoinRoom(roomName);
         }
 

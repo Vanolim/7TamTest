@@ -30,20 +30,9 @@ namespace TapTest
             }
         }
 
-        // public void Activate() => gameObject.SetActive(true);
-        // public void Deactivate() => gameObject.SetActive(false);
+        public void Activate() => PhotonView.RPC("RPC_Activate", RpcTarget.AllBuffered);
 
-        public void Activate()
-        {
-            gameObject.SetActive(true);
-            PhotonView.RPC("RPC_Activate", RpcTarget.OthersBuffered);
-        }
-
-        public void Deactivate()
-        {
-            PhotonView.RPC("RPC_Deactivate", RpcTarget.OthersBuffered);
-            gameObject.SetActive(false);
-        }
+        public void Deactivate() => PhotonView.RPC("RPC_Deactivate", RpcTarget.AllBuffered);
 
         [PunRPC]
         private void RPC_Activate() => gameObject.SetActive(true);
@@ -53,7 +42,6 @@ namespace TapTest
         
         public void Destroy()
         {
-            Deactivate();
             OnDestroyed?.Invoke(this);
         }
 

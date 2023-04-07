@@ -7,7 +7,7 @@ namespace TapTest
     public class CoinWallet : IDisposable
     {
         private Character _character;
-        private int _value;
+        public int Value { get; private set; }
 
         [Inject]
         private void Construct(Character character)
@@ -18,9 +18,9 @@ namespace TapTest
 
         private void Add()
         {
-            _value++;
+            Value++;
             _character.PhotonView.RPC("RPC_UpdateCoinWalletView", RpcTarget.AllBuffered, 
-                _value);
+                Value);
         }
 
         public void Dispose()

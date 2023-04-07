@@ -3,6 +3,7 @@ using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using Zenject;
 
 namespace TapTest
 {
@@ -11,35 +12,16 @@ namespace TapTest
     {
         [SerializeField]
         private Character _prefab;
-        
-        [SerializeField]
-        private Bullet _bullet;
-        
+
+        private CoinWallet _coinWallet;
+
         private const byte CharacterSpawnEventCode = 1;
-        private const byte BulletSpawnEventCode = 2;
+        private const byte CharacterIsDie = 2;
 
-        private int start = 100;
-
-        public event Action OnLeaveRoom;
-        
-        public void LeaveRoom()
+        [Inject]
+        private void Construct(CoinWallet coinWallet)
         {
-            PhotonNetwork.LeaveRoom();
-        }
-
-        public override void OnLeftRoom()
-        {
-            OnLeaveRoom?.Invoke();
-        }
-
-        public override void OnPlayerEnteredRoom(Player player)
-        {
-            
-        }
-        
-        public override void OnPlayerLeftRoom(Player player)
-        {
-            
+            _coinWallet = coinWallet;
         }
 
         public void RegisterCharacter(Character character)
@@ -70,35 +52,6 @@ namespace TapTest
                 Debug.LogError("Failed allocate");
             }
         }
-        
-        public void RegisterBullet(Bullet bullet)
-        {
-            PhotonView photonView = bullet.PhotonView;
-            if (PhotonNetwork.AllocateViewID(photonView))
-            {
-                object[] data = new object[]
-                {
-                    bullet.transform.position, bullet.transform.rotation, photonView.ViewID
-                };
-
-                RaiseEventOptions raiseEventOptions = new RaiseEventOptions
-                {
-                    Receivers = ReceiverGroup.Others,
-                    CachingOption = EventCaching.DoNotCache
-                };
-
-                SendOptions sendOptions = new SendOptions()
-                {
-                    Reliability = true
-                };
-
-                PhotonNetwork.RaiseEvent(BulletSpawnEventCode, data, raiseEventOptions, sendOptions);
-            }
-            else
-            {
-                Debug.LogError("Failed allocate");
-            }
-        }
 
         public void OnEvent(EventData photonEvent)
         {
@@ -110,13 +63,13 @@ namespace TapTest
                     .GetComponent<Character>();
                 character.PhotonView.ViewID = (int)data[2];
             }
-            else if (photonEvent.Code == BulletSpawnEventCode)
-            {
-                object[] data = (object[])photonEvent.CustomData;
+        }
 
-                Bullet bullet = Instantiate(_bullet, (Vector3)data[0], (Quaternion)data[1]);
-                bullet.PhotonView.ViewID = (int)data[2];
-            }
+        public void SendMessageCharacterIsDie()
+        {
+            object[] content = { PhotonNetwork.NickName, _coinWallet.Value };
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient }; 
+            PhotonNetwork.RaiseEvent(CharacterIsDie, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
 }

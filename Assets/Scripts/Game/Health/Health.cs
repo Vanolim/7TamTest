@@ -1,6 +1,5 @@
 using System;
 using Photon.Pun;
-using UnityEngine;
 using Zenject;
 
 namespace TapTest
@@ -29,7 +28,8 @@ namespace TapTest
             
             if (_currentValue <= 0)
             {
-                _gamePhotonService.LeaveRoom();
+                _character.Deactivate();
+                _gamePhotonService.SendMessageCharacterIsDie();
             }
             
             _character.PhotonView.RPC("RPC_UpdateHealthBar", RpcTarget.AllBuffered, 

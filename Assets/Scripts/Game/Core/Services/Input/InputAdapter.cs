@@ -3,8 +3,7 @@ using Zenject;
 
 namespace TapTest
 {
-    public class InputAdapter : IInitializable,
-        IActivable,
+    public class InputAdapter : IActivable,
         IFixedTickable
     {
         private CharacterSpawner _characterSpawner;
@@ -19,6 +18,7 @@ namespace TapTest
         {
             _tickableService = tickableService;
             SetCharacter(character);
+            InitCharacterInput();
         }
 
         private void SetCharacter(Character character)
@@ -41,13 +41,12 @@ namespace TapTest
             _characterGun.TryShoot();
         }
 
-        public void Initialize()
+        private void InitCharacterInput()
         {
             _tickableService.Add(this);
             
             _characterInput = new CharacterInput();
-            _characterInput.Enable();
-            
+
             _mapInput = _characterInput.Character;
             _mapInput.Shoot.performed += _ => Shoot();
         }
