@@ -26,6 +26,7 @@ namespace TapTest
             {
                 PhotonNetwork.NickName = playerName;
                 PhotonNetwork.ConnectUsingSettings();
+                PhotonNetwork.AutomaticallySyncScene = true;
                 _roomOptions = new RoomOptions();
                 _photonService.CreateRoom(roomName, _roomOptions);
             }
@@ -36,6 +37,7 @@ namespace TapTest
             if (IsPlayerNameEnter(out string playerName))
             {
                 PhotonNetwork.NickName = playerName;
+                PhotonNetwork.AutomaticallySyncScene = true;
                 PhotonNetwork.ConnectUsingSettings();
                 _photonService.JoinRoom(roomName);
             }

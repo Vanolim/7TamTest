@@ -15,8 +15,6 @@ namespace TapTest
 
         public override void InstallBindings()
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
-            
             BindPrefab(_lobbyUIContext);
             BindInstance(new Lobby());
             

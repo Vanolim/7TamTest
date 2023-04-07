@@ -204,9 +204,8 @@ MonoBehaviour:
   <GamePhotonService>k__BackingField: {fileID: 3534031161723250364, guid: 09f319be311b64ace893cbca26edcd12, type: 3}
   <Bullet>k__BackingField: {fileID: 3329305686788409713, guid: 8337a78afd980458280c1ac655068d67, type: 3}
   <BulletSetting>k__BackingField: {fileID: 11400000, guid: be88a59951c8840d88c28333242a3444, type: 2}
-  <GameSetting>k__BackingField: {fileID: 11400000, guid: 24d1bce3c59ac4c4e8a751e6b4ea688e, type: 2}
   <GameBoard>k__BackingField: {fileID: 7045403842772991216, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
-  <FinishGameView>k__BackingField: {fileID: 8614621951712187075, guid: 1b6ceec685e454e3bbfc3b7c43dd4263, type: 3}
+  <HigscoresView>k__BackingField: {fileID: 0}
 --- !u!4 &155706311
 Transform:
   m_ObjectHideFlags: 0
@@ -306,51 +305,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &982295843
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 982295844}
-  - component: {fileID: 982295845}
-  m_Layer: 0
-  m_Name: GamePoolInstaller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &982295844
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982295843}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2056164173}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &982295845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982295843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c29d35af78d46ec89167f5b14afd5fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 3329305686788409713, guid: 8337a78afd980458280c1ac655068d67, type: 3}
 --- !u!1 &1340204759
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +445,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 99602761}
-  - {fileID: 982295844}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
