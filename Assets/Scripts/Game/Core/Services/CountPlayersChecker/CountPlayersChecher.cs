@@ -22,7 +22,7 @@ namespace TapTest
         }
 
         private bool CheckActivate() 
-            => PhotonNetwork.CountOfRooms >= _gameSetting.MinCountActivateGame;
+            => PhotonNetwork.CurrentRoom.Players.Count >= _gameSetting.MinCountActivateGame;
 
         private void Activate()
         {
