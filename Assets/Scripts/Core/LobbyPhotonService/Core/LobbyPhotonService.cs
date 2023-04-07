@@ -17,7 +17,6 @@ namespace TapTest
 
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
-            Debug.Log("Swithed");
             LeaveRoom();
         }
 
@@ -29,7 +28,7 @@ namespace TapTest
 
         public void LeaveRoom()
         {
-            PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.DestroyAll();
             PhotonNetwork.LeaveRoom();
         }
 
@@ -40,7 +39,6 @@ namespace TapTest
 
         public override void OnJoinedRoom()
         {
-            Debug.Log("Joined");
             PhotonNetwork.LoadLevel("Game");
         }
     }
