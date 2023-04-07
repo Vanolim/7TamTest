@@ -26,7 +26,6 @@ namespace TapTest
         [PunRPC]
         private void RPC_TakeDamage(float damage)
         {
-            Debug.Log(gameObject.name);
             OnTakeDamage?.Invoke(damage);
         }
     }

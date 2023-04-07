@@ -30,9 +30,17 @@ namespace TapTest
             }
         }
 
-        public void Activate() => gameObject.SetActive(true);
-        
-        public void Deactivate() => gameObject.SetActive(false);
+        public void Activate() => SetActivePhotonEvent(true);
+        public void Deactivate() => SetActivePhotonEvent(false);
+
+        private void SetActivePhotonEvent(bool value)
+        {
+            if(PhotonView.IsMine)
+                PhotonView.RPC("RPC_SetActivate", RpcTarget.AllBuffered, value);
+        }
+
+        [PunRPC]
+        private void RPC_SetActivate(bool value) => gameObject.SetActive(value);
 
         public void Destroy()
         {
