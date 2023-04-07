@@ -15,4 +15,4 @@ MonoBehaviour:
   <CountCoins>k__BackingField: 60
   <MinCountActivateGame>k__BackingField: 2
   <WaitBootstrapperScene>k__BackingField: 2
-  <WaitFinishedLoadLobby>k__BackingField: 4
+  <WaitFinishedLoadLobby>k__BackingField: 6

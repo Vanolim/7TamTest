@@ -17,19 +17,21 @@ namespace TapTest
         {
             BindPrefab(_gameProvider.Character);
             BindPrefab(_gameProvider.GamePhotonService);
-            BindInstance(_gameProvider.CharacterSetting);
-            BindInstance(new CountPlayersChecker());
             BindPrefab(_gameProvider.GameBoard);
+            BindPrefab(_gameProvider.TickableService);
+            BindPrefab(_gameProvider.InputPanel);
+            
+            BindInstance(_gameProvider.CharacterSetting);
+            BindInstance(_gameProvider.Bullet);
             BindInstance(_gameProvider.BulletSetting);
+            
+            BindInstance(new CountPlayersChecker());
             BindInstance(new CoinSpawner());
             BindInstance(new CoinWallet());
             BindInstance(new Health());
-            BindInstance(_gameProvider.Bullet);
             BindInstance(new CharacterSpawner());
             BindInstance(new InputAdapter());
             BindInstance(new BulletSpawner());
-            BindPrefab(_gameProvider.TickableService);
-            BindPrefab(_gameProvider.InputPanel);
 
             if (PhotonNetwork.IsMasterClient)
             {

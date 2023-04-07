@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 using Zenject;
@@ -28,7 +29,7 @@ namespace TapTest
             _higscoresService = higscoresService;
             _coroutineService = coroutineService;
             _lobbyPhotonService = lobbyPhotonService;
-            _waitFinishedLoadLobbyValue = gameSetting.WaitBootstrapperScene;
+            _waitFinishedLoadLobbyValue = gameSetting.WaitFinishedLoadLobby;
         }
 
         private void AddDeadCharacter(CharacterData characterData)
@@ -41,8 +42,10 @@ namespace TapTest
         {
             if (_deadCharacterDats.Count < PhotonNetwork.CurrentRoom.Players.Count)
             {
-                Character[] characters = Object.FindObjectsOfType<Character>(true);
-                if(characters.Length == 1)
+                Character[] characters = Object.FindObjectsOfType<Character>(false);
+                int countActiveCharacters = characters.Count(x => x.isActiveAndEnabled);
+
+                if(countActiveCharacters == 1)
                     characters[0].Died();
             }
             else
@@ -53,7 +56,6 @@ namespace TapTest
 
         private void FinishGame()
         {
-            Debug.Log("Finish");
             _higscoresService.SetData(_deadCharacterDats.ToArray());
             _higscoresService.ActivateView();
             _coroutineService.StartCoroutine(WaitLoadLobby());
