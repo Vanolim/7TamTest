@@ -26,18 +26,18 @@ namespace TapTest
             {
                 PhotonNetwork.NickName = playerName;
                 PhotonNetwork.ConnectUsingSettings();
-                PhotonNetwork.AutomaticallySyncScene = true;
+                //PhotonNetwork.AutomaticallySyncScene = true;
                 _roomOptions = new RoomOptions();
                 _photonService.CreateRoom(roomName, _roomOptions);
             }
         }
 
-        private void JoinRoomRoom(string roomName)
+        private void JoinRoom(string roomName)
         {
             if (IsPlayerNameEnter(out string playerName))
             {
                 PhotonNetwork.NickName = playerName;
-                PhotonNetwork.AutomaticallySyncScene = true;
+                //PhotonNetwork.AutomaticallySyncScene = true;
                 PhotonNetwork.ConnectUsingSettings();
                 _photonService.JoinRoom(roomName);
             }
@@ -52,13 +52,13 @@ namespace TapTest
         public void Initialize()
         {
             _lobbyUIContext.LobbyCreatorView.OnCreate += CreateRoom;
-            _lobbyUIContext.LobbyJoinView.OnJoinRoom += JoinRoomRoom;
+            _lobbyUIContext.LobbyJoinView.OnJoinRoom += JoinRoom;
         }
 
         public void Dispose()
         {
             _lobbyUIContext.LobbyCreatorView.OnCreate -= CreateRoom;
-            _lobbyUIContext.LobbyJoinView.OnJoinRoom -= JoinRoomRoom;
+            _lobbyUIContext.LobbyJoinView.OnJoinRoom -= JoinRoom;
         }
     }
 }
