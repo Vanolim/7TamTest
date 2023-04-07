@@ -15,6 +15,8 @@ namespace TapTest
         
         public override void InstallBindings()
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            
             BindPrefab(_gameProvider.Character);
             BindPrefab(_gameProvider.GamePhotonService);
             BindPrefab(_gameProvider.GameBoard);
