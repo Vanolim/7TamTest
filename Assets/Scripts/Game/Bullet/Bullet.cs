@@ -49,7 +49,6 @@ namespace TapTest
 
         public void Initialize(BulletSetting bulletSetting)
         {
-            Debug.Log(Damage);
             Damage = bulletSetting.Damage;
             PhotonView = gameObject.GetComponent<PhotonView>();
             gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);

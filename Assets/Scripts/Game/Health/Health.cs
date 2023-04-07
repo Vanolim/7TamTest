@@ -21,12 +21,14 @@ namespace TapTest
             _character = character;
             _gamePhotonService = gamePhotonService;
             _character.CollisionDetector.OnTakeDamage += TakeDamage;
+            Debug.Log(11111111111111);
+            Debug.Log(_character.PhotonView.IsMine);
         }
 
         private void TakeDamage(float value)
         {
             _currentValue -= value;
-            Debug.Log(_currentValue);
+            Debug.Log(_currentValue + " " + value);
             if (_currentValue <= 0)
             {
                 _gamePhotonService.LeaveRoom();
