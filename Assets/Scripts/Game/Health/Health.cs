@@ -20,6 +20,7 @@ namespace TapTest
             _currentValue = _maxValue;
             _character = character;
             _gamePhotonService = gamePhotonService;
+            
             _character.CharacterPhotonAdapter.OnTakeDamage += TakeDamage;
             _character.OnDiedLast += DeadCharacter;
         }

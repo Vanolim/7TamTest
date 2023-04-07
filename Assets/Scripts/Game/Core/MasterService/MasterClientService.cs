@@ -53,11 +53,6 @@ namespace TapTest
         private string SetData()
         {
             CharacterData[] sortDeadCharacterDats = _deadCharacterDats.OrderBy(x => x.CountCoins).ToArray();
-            foreach (var VARIABLE in sortDeadCharacterDats)
-            {
-                Debug.Log(VARIABLE.Name);
-            }
-            
             
             string data = "";
             for (int i = 0; i < sortDeadCharacterDats.Length; i++)

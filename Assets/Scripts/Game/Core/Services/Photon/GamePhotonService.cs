@@ -71,8 +71,11 @@ namespace TapTest
             {
                 object[] data = (object[])photonEvent.CustomData;
 
-                string name = (string)data[0];
+                string name = data[0].ToString();
                 int coin = (int)data[1];
+                
+                Debug.Log(name);
+                Debug.Log(coin);
                 
                 OnCharacterDied?.Invoke(new CharacterData(name, coin));
             }
