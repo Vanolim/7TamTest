@@ -6,13 +6,13 @@ namespace TapTest
 {
     public class LobbyPhotonService : MonoBehaviourPunCallbacks
     {
-        // private SceneLoader _sceneLoader;
-        //
-        // [Inject]
-        // private void Construct(SceneLoader sceneLoader)
-        // {
-        //     _sceneLoader = sceneLoader;
-        // }
+        private SceneLoader _sceneLoader;
+        
+        [Inject]
+        private void Construct(SceneLoader sceneLoader)
+        {
+            _sceneLoader = sceneLoader;
+        }
         
         public void CreateRoom(string roomName, RoomOptions roomOptions) => 
             PhotonNetwork.CreateRoom(roomName, roomOptions);
@@ -23,11 +23,10 @@ namespace TapTest
         public void LeaveRoom() => 
             PhotonNetwork.LeaveRoom();
 
-        // public override void OnLeftRoom()
-        // {
-        //     base.OnLeftRoom();
-        //     _sceneLoader.Load(LoadableScene.Lobby);
-        // }
+        public override void OnLeftRoom()
+        {
+            _sceneLoader.Load(LoadableScene.Lobby);
+        }
 
         public override void OnJoinedRoom() => 
             PhotonNetwork.LoadLevel("Game");
