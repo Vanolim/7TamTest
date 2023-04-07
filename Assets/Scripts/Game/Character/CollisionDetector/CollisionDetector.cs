@@ -20,9 +20,6 @@ namespace TapTest
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if(PhotonNetwork.IsMasterClient == false)
-                return;
-            
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
                 OnTakeDamage?.Invoke(doingDamage.Damage);
