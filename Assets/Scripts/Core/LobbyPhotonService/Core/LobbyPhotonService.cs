@@ -27,8 +27,11 @@ namespace TapTest
         public void JoinRoom(string roomName) => 
             PhotonNetwork.JoinRoom(roomName);
 
-        public void LeaveRoom() => 
+        public void LeaveRoom()
+        {
+            PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
             PhotonNetwork.LeaveRoom();
+        }
 
         public override void OnLeftRoom()
         {
