@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementSpeed>k__BackingField: 5
   <RotationSpeed>k__BackingField: 800
-  <GunReloadTime>k__BackingField: 0.4
+  <GunReloadTime>k__BackingField: 0.6
   <InitHealth>k__BackingField: 10

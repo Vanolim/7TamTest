@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace TapTest
 {
-    [RequireComponent(typeof(PhotonView))]
     [RequireComponent(typeof(BulletMovement))]
     public class Bullet : MonoBehaviour,
         IActivable,
@@ -12,8 +11,10 @@ namespace TapTest
     {
         [field:SerializeField]
         public PhotonView PhotonView { get; private set; }
-        
-        public float Damage { get; private set; }
+
+        private float _damage;
+
+        public float Damage => _damage;
 
         public event Action<Bullet> OnDestroyed;
         
@@ -49,9 +50,8 @@ namespace TapTest
 
         public void Initialize(BulletSetting bulletSetting)
         {
-            Damage = bulletSetting.Damage;
-            PhotonView = gameObject.GetComponent<PhotonView>();
             gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);
+            _damage = bulletSetting.Damage;
         }
     }
 }
