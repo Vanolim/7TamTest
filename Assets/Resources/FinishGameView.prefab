@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 8614621951712187075}
   - component: {fileID: 5888287006629908104}
   m_Layer: 5
-  m_Name: Highscores
+  m_Name: FinishGameView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd17d1440374489bfa6ae25fe1ab031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _photonView: {fileID: 5888287006629908104}
+  PhotonView: {fileID: 5888287006629908104}
   _entryTemplate: {fileID: 1625009377644268324, guid: d50c045ce295c4464924518be858cede, type: 3}
   _entryContainer: {fileID: 7792318150320248170}
   _templateHeight: 72

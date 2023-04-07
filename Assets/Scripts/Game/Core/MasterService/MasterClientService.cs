@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Photon.Pun;
+using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
@@ -19,6 +21,7 @@ namespace TapTest
             _gamePhotonService = gamePhotonService;
             _finishGameView = finishGameView;
             _gamePhotonService.OnCharacterDied += AddDiedCharacter;
+            _finishGameView.Deactivate();
         }
 
         private void AddDiedCharacter(CharacterData characterData)
@@ -44,6 +47,21 @@ namespace TapTest
         private void FinishGame()
         {
             _finishGameView.Activate();
+            _finishGameView.Test(SetData());
+        }
+
+        private string SetData()
+        {
+            CharacterData[] sortDeadCharacterDats = _deadCharacterDats.OrderBy(x => x.CountCoins).ToArray();
+            string data = "";
+            for (int i = 0; i < sortDeadCharacterDats.Length; i++)
+            {
+                data += sortDeadCharacterDats[i].Name + ',';
+                data += sortDeadCharacterDats[i].CountCoins + ',';
+                data += i + ";";
+            }
+
+            return data;
         }
 
         public void Dispose()

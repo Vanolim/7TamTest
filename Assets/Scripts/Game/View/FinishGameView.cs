@@ -9,8 +9,8 @@ namespace TapTest
         IInitializable,
         IActivable
     {
-        [SerializeField]
-        private PhotonView _photonView;
+        [field:SerializeField]
+        public PhotonView PhotonView;
         
         [SerializeField]
         private EntryTemplate _entryTemplate;
@@ -27,31 +27,36 @@ namespace TapTest
         public event Action OnLeaved;
 
         private void LeavedEvent() => OnLeaved?.Invoke();
-
-        public void FormHighscores(CharacterData[] characterDatas)
+        
+        public void Test(string data)
         {
-            for (int i = 0; i < characterDatas.Length; i++)
-            {
-                EntryTemplate entry = Instantiate(_entryTemplate, _entryContainer)
-                    .GetComponent<EntryTemplate>();
-
-                CharacterData characterData = characterDatas[i];
-                entry.SetParametrs(characterData.Name, characterData.CountCoins.ToString(), i.ToString());
-                
-                RectTransform entryRectTransform = entry.GetComponent<RectTransform>();
-                entryRectTransform.anchoredPosition = new Vector2(0, _templateHeight * i);
-            }
+            //PhotonView.RPC("RPC_Init", RpcTarget.AllBuffered, name, coins, i);
         }
-        public void Activate() => _photonView.RPC("RPC_Activate", RpcTarget.AllBuffered);
 
-        public void Deactivate() => _photonView.RPC("RPC_Deactivate", RpcTarget.AllBuffered);
+        public void Activate()
+        {
+            PhotonView.RPC("RPC_Activate", RpcTarget.AllBuffered);
+        }
+
+        public void Deactivate() => PhotonView.RPC("RPC_Deactivate", RpcTarget.AllBuffered);
 
         [PunRPC]
         private void RPC_Activate() => gameObject.SetActive(true);
 
         [PunRPC]
         private void RPC_Deactivate() => gameObject.SetActive(false);
-        
+
+        [PunRPC]
+        private void RPC_Init(string name, string dataCoins, int i)
+        {
+            EntryTemplate entry = Instantiate(_entryTemplate, _entryContainer)
+                .GetComponent<EntryTemplate>();
+            
+            entry.SetParametrs(name, dataCoins, i.ToString());
+                
+            RectTransform entryRectTransform = entry.GetComponent<RectTransform>();
+            entryRectTransform.anchoredPosition = new Vector2(0, _templateHeight * i);
+        }
 
         public void Initialize() => _leave.onClick.AddListener(LeavedEvent);
         private void OnDestroy() => _leave.onClick.RemoveListener(LeavedEvent);

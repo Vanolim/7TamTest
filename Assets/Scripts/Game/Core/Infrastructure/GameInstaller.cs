@@ -29,14 +29,12 @@ namespace TapTest
             BindInstance(new CharacterSpawner());
             BindInstance(new InputAdapter());
             BindInstance(new BulletSpawner());
-            
             BindPrefab(_gameProvider.TickableService);
             BindPrefab(_gameProvider.InputPanel);
-            BindPrefab(_gameProvider.FinishGameView);
 
             if (PhotonNetwork.IsMasterClient)
             {
-                Debug.Log(1111111111);
+                BindInstance(new FinishedViewSpawner().Spawn());
                 BindInstance(new MasterClientService());
             }
 
