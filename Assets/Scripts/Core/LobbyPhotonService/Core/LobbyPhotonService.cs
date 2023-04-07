@@ -28,8 +28,8 @@ namespace TapTest
 
         public void LeaveRoom()
         {
-            PhotonNetwork.DestroyAll();
             PhotonNetwork.LeaveRoom();
+            PhotonNetwork.DestroyAll();
         }
 
         public override void OnLeftRoom()
