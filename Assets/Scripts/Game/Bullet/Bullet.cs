@@ -36,7 +36,7 @@ namespace TapTest
         private void SetActivePhotonEvent(bool value)
         {
             if(PhotonView.IsMine)
-                PhotonView.RPC("RPC_SetActivate", RpcTarget.AllBuffered, value);
+                PhotonView.RPC("RPC_SetActivate", RpcTarget.All, value);
         }
 
         [PunRPC]

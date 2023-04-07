@@ -8,15 +8,11 @@ namespace TapTest
     public class BulletSpawner
     {
         private BulletSetting _bulletSetting;
-        private CoroutineService _coroutineService;
 
-        private const float _waitActivateBullet = 0.05f;
-        
         [Inject]
-        private void Construct(BulletSetting bulletSetting, CoroutineService coroutineService)
+        private void Construct(BulletSetting bulletSetting)
         {
             _bulletSetting = bulletSetting;
-            _coroutineService = coroutineService;
         }
 
         public void Spawn(Transform spawnPosition)
@@ -32,15 +28,9 @@ namespace TapTest
             bullet.OnDestroyed += RemoveBullet;
             bullet.Initialize(_bulletSetting);
             bullet.SetSpawnPoint(spawnPosition);
-            _coroutineService.StartCoroutine(WaitActivateBullet(bullet));
-        }
-
-        private IEnumerator WaitActivateBullet(Bullet bullet)
-        {
-            yield return new WaitForSeconds(_waitActivateBullet);
             bullet.Activate();
         }
-
+        
         private void RemoveBullet(Bullet bullet)
         {
             bullet.OnDestroyed -= RemoveBullet;
