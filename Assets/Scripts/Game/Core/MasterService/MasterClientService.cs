@@ -41,7 +41,7 @@ namespace TapTest
         {
             if (_deadCharacterDats.Count < PhotonNetwork.CurrentRoom.Players.Count)
             {
-                Character[] characters = Object.FindObjectsOfType<Character>();
+                Character[] characters = Object.FindObjectsOfType<Character>(true);
                 if(characters.Length == 1)
                     characters[0].Died();
             }
