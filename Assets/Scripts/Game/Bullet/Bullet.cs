@@ -30,18 +30,28 @@ namespace TapTest
             }
         }
 
-        public void Activate() => SetActivePhotonEvent(true);
-        public void Deactivate() => SetActivePhotonEvent(false);
+        // public void Activate() => gameObject.SetActive(true);
+        // public void Deactivate() => gameObject.SetActive(false);
 
-        private void SetActivePhotonEvent(bool value)
+        public void Activate()
         {
-            if(PhotonView.IsMine)
-                PhotonView.RPC("RPC_SetActivate", RpcTarget.All, value);
+            gameObject.SetActive(true);
+            PhotonView.RPC("RPC_Activate", RpcTarget.OthersBuffered);
+        }
+
+        public void Deactivate()
+        {
+            gameObject.SetActive(false);
+            PhotonView.RPC("RPC_Deactivate", RpcTarget.OthersBuffered);
         }
 
         [PunRPC]
-        private void RPC_SetActivate(bool value) => gameObject.SetActive(value);
-
+        private void RPC_Activate() => gameObject.SetActive(true);
+        //public void Activate() => gameObject.SetActive(true);
+        
+        [PunRPC]
+        private void RPC_Deactivate() => gameObject.SetActive(false);
+        //public void Deactivate() => gameObject.SetActive(false);
         public void Destroy()
         {
             Deactivate();
