@@ -62,6 +62,7 @@ namespace TapTest
 
         public void Deactivate()
         {
+            Debug.Log("aaaaaaaaaaaaaaaaaaaa");
             _characterInput.Disable();
             _inputPanel.Deactivate();
         }
