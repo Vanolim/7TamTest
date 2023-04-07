@@ -25,6 +25,9 @@ namespace TapTest
         [field: SerializeField]
         public CollisionDetector CollisionDetector { get; private set; }
         
+        [field: SerializeField]
+        public CharacterPhotonAdapter CharacterPhotonAdapter { get; private set; }
+        
         public void Initialize()
         {
             _characterColor.Initialize();

@@ -11,10 +11,8 @@ namespace TapTest
     {
         [field:SerializeField]
         public PhotonView PhotonView { get; private set; }
-
+        
         private float _damage;
-
-        public float Damage => _damage;
 
         public event Action<Bullet> OnDestroyed;
         
@@ -24,19 +22,13 @@ namespace TapTest
             transform.up = point.up;
         }
 
-        // private void OnCollisionEnter2D(Collision2D col)
-        // {
-        //     if (PhotonView.IsMine)
-        //     {
-        //         if (col.gameObject.TryGetComponent(out CharacterHealth characterHealth))
-        //         {
-        //             PhotonView character = characterHealth.PhotonView;
-        //             character.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, _damage);
-        //         }
-        //     
-        //         OnDestroyed?.Invoke(this);
-        //     }
-        // }
+        public void TakeDamageEvent(PhotonView target)
+        {
+            if (PhotonView.IsMine)
+            {
+                target.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, _damage);
+            }
+        }
 
         public void Activate() => gameObject.SetActive(true);
         
@@ -52,7 +44,6 @@ namespace TapTest
         {
             gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);
             _damage = bulletSetting.Damage;
-            Debug.Log($"{_damage} -- {Damage}");
         }
     }
 }

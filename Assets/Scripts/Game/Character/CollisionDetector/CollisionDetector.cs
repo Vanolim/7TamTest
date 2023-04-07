@@ -28,8 +28,7 @@ namespace TapTest
             
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
-                Debug.Log(doingDamage.Damage);
-                OnTakeDamage?.Invoke(doingDamage.Damage);
+                doingDamage.TakeDamageEvent(_photonView);
                 doingDamage.Destroy();
             }
         }

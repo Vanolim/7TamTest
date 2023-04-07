@@ -20,7 +20,7 @@ namespace TapTest
             _currentValue = _maxValue;
             _character = character;
             _gamePhotonService = gamePhotonService;
-            _character.CollisionDetector.OnTakeDamage += TakeDamage;
+            _character.CharacterPhotonAdapter.OnTakeDamage += TakeDamage;
         }
 
         private void TakeDamage(float value)
@@ -38,7 +38,7 @@ namespace TapTest
 
         public void Dispose()
         {
-            _character.CollisionDetector.OnTakeDamage -= TakeDamage;
+            _character.CharacterPhotonAdapter.OnTakeDamage -= TakeDamage;
         }
     }
 }

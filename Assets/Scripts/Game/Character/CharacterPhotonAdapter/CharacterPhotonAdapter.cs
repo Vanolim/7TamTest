@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace TapTest
     {
         [SerializeField]
         private CharacterCanvasView _characterCanvasView;
+
+        public event Action<float> OnTakeDamage;
         
         [PunRPC]
         private void RPC_UpdateCoinWalletView(int value)
@@ -18,6 +21,12 @@ namespace TapTest
         private void RPC_UpdateHealthBar(float maxValue, float currentValue)
         {
             _characterCanvasView.UpdateHealthBar(currentValue / maxValue);
+        }
+        
+        [PunRPC]
+        private void RPC_TakeDamage(float damage)
+        {
+            OnTakeDamage?.Invoke(damage);
         }
     }
 }

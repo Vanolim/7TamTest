@@ -1,10 +1,10 @@
-using UnityEngine;
+using Photon.Pun;
 
 namespace TapTest
 {
     public interface IDoingDamage
     {
-        public float Damage { get; }
         public void Destroy();
+        public void TakeDamageEvent(PhotonView target);
     }
 }

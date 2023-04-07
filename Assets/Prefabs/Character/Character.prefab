@@ -221,6 +221,7 @@ MonoBehaviour:
   <CharacterGun>k__BackingField: {fileID: 3694226127250019653}
   <CharacterCanvasView>k__BackingField: {fileID: 526358346282014327}
   <CollisionDetector>k__BackingField: {fileID: 6438064613399749535}
+  <CharacterPhotonAdapter>k__BackingField: {fileID: 8346016703027259367}
 --- !u!114 &7588654627701332577
 MonoBehaviour:
   m_ObjectHideFlags: 0
