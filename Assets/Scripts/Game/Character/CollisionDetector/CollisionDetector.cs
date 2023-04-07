@@ -6,6 +6,9 @@ namespace TapTest
 {
     public class CollisionDetector : MonoBehaviour
     {
+        [SerializeField]
+        private PhotonView _photonView;
+        
         public event Action OnTakeCoin;
         public event Action<float> OnTakeDamage;
 
@@ -20,6 +23,9 @@ namespace TapTest
 
         private void OnCollisionEnter2D(Collision2D col)
         {
+            if(_photonView.IsMine == false)
+                return;
+            
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
                 OnTakeDamage?.Invoke(doingDamage.Damage);
