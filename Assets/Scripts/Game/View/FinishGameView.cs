@@ -6,7 +6,6 @@ using UnityEngine.UI;
 namespace TapTest
 {
     public class FinishGameView : MonoBehaviour,
-        IInitializable,
         IActivable
     {
         [field:SerializeField]
@@ -21,13 +20,6 @@ namespace TapTest
         [SerializeField]
         private float _templateHeight;
 
-        [SerializeField]
-        private Button _leave;
-
-        public event Action OnLeaved;
-
-        private void LeavedEvent() => OnLeaved?.Invoke();
-        
         public void Test(string name, string dataCoins, int i)
         {
             PhotonView.RPC("RPC_Init", RpcTarget.AllBuffered, name, dataCoins, i);
@@ -57,8 +49,5 @@ namespace TapTest
             RectTransform entryRectTransform = entry.GetComponent<RectTransform>();
             entryRectTransform.anchoredPosition = new Vector2(0, _templateHeight * i);
         }
-
-        public void Initialize() => _leave.onClick.AddListener(LeavedEvent);
-        private void OnDestroy() => _leave.onClick.RemoveListener(LeavedEvent);
     }
 }

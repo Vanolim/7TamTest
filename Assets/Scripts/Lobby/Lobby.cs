@@ -23,6 +23,7 @@ namespace TapTest
         private void CreateRoom(string roomName)
         {
             PhotonNetwork.NickName = _lobbyUIContext.LobbyNameView.PlayerName.text;
+            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.ConnectUsingSettings();
             _roomOptions = new RoomOptions();
             _photonService.CreateRoom(roomName, _roomOptions);
