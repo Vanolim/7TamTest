@@ -13,6 +13,7 @@ namespace TapTest
         private CharacterInput.CharacterActions _mapInput;
         private TickableService _tickableService;
         private InputPanel _inputPanel;
+        private bool _isActive;
         
         [Inject]
         private void Construct(Character character, TickableService tickableService,
@@ -32,10 +33,13 @@ namespace TapTest
 
         public void Tick(float dt)
         {
-            Vector2 inputDirection = _characterInput.Character.Move.ReadValue<Vector2>();
-            if (inputDirection != Vector2.zero)
+            if (_isActive)
             {
-                _characterMovement.Move(_characterInput.Character.Move.ReadValue<Vector2>(), dt);
+                Vector2 inputDirection = _characterInput.Character.Move.ReadValue<Vector2>();
+                if (inputDirection != Vector2.zero)
+                {
+                    _characterMovement.Move(_characterInput.Character.Move.ReadValue<Vector2>(), dt);
+                }
             }
         }
 
@@ -62,8 +66,7 @@ namespace TapTest
 
         public void Deactivate()
         {
-            Debug.Log("aaaaaaaaaaaaaaaaaaaa");
-            //_characterInput.Disable();
+            _characterInput.Disable();
             _inputPanel.Deactivate();
         }
     }
