@@ -14,9 +14,12 @@ namespace TapTest
         private Character _prefab;
 
         private CoinWallet _coinWallet;
+        private InputAdapter _inputAdapter;
 
         private const byte CharacterSpawnEventCode = 1;
-        private const byte CharacterIsDie = 2;
+        private const byte MessageCharacterDeadEventCode = 2;
+
+        public event Action<CharacterData> OnCharacterDied;
 
         [Inject]
         private void Construct(CoinWallet coinWallet)
@@ -63,22 +66,28 @@ namespace TapTest
                     .GetComponent<Character>();
                 character.PhotonView.ViewID = (int)data[2];
             }
-            else if (photonEvent.Code == CharacterIsDie && PhotonNetwork.IsMasterClient)
+            else if (photonEvent.Code == MessageCharacterDeadEventCode)
             {
                 object[] data = (object[])photonEvent.CustomData;
 
                 string name = (string)data[0];
                 int coin = (int)data[1];
                 
-                Debug.Log(name + " " + coin);
+                OnCharacterDied?.Invoke(new CharacterData(name, coin));
             }
         }
 
-        public void SendMessageCharacterIsDie()
+        public void CharacterDie()
+        {
+            _inputAdapter.Deactivate();
+            SendMessageCharacterData();
+        }
+
+        private void SendMessageCharacterData()
         {
             object[] content = { PhotonNetwork.NickName, _coinWallet.Value };
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient }; 
-            PhotonNetwork.RaiseEvent(CharacterIsDie, content, raiseEventOptions, SendOptions.SendReliable);
+            PhotonNetwork.RaiseEvent(MessageCharacterDeadEventCode, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
 }

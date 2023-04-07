@@ -12,11 +12,14 @@ namespace TapTest
         private CharacterInput _characterInput;
         private CharacterInput.CharacterActions _mapInput;
         private TickableService _tickableService;
+        private InputPanel _inputPanel;
         
         [Inject]
-        private void Construct(Character character, TickableService tickableService)
+        private void Construct(Character character, TickableService tickableService,
+            InputPanel inputPanel)
         {
             _tickableService = tickableService;
+            _inputPanel = inputPanel;
             SetCharacter(character);
             InitCharacterInput();
         }
@@ -51,7 +54,16 @@ namespace TapTest
             _mapInput.Shoot.performed += _ => Shoot();
         }
 
-        public void Activate() => _characterInput.Enable();
-        public void Deactivate() => _characterInput.Disable();
+        public void Activate()
+        {
+            _characterInput.Enable();
+            _inputPanel.Activate();
+        }
+
+        public void Deactivate()
+        {
+            _characterInput.Disable();
+            _inputPanel.Deactivate();
+        }
     }
 }

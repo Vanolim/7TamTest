@@ -54,6 +54,7 @@ MonoBehaviour:
   - RPC_UpdateCoinWalletView
   - RPC_SetActivate
   - RPC_SetPlayerName
+  - RPC_Died
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

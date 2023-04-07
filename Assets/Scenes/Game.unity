@@ -206,6 +206,7 @@ MonoBehaviour:
   <BulletSetting>k__BackingField: {fileID: 11400000, guid: be88a59951c8840d88c28333242a3444, type: 2}
   <GameSetting>k__BackingField: {fileID: 11400000, guid: 24d1bce3c59ac4c4e8a751e6b4ea688e, type: 2}
   <GameBoard>k__BackingField: {fileID: 7045403842772991216, guid: 0939a6d005add8a4b90346a651d138b7, type: 3}
+  <FinishGameView>k__BackingField: {fileID: 8614621951712187075, guid: 1b6ceec685e454e3bbfc3b7c43dd4263, type: 3}
 --- !u!4 &155706311
 Transform:
   m_ObjectHideFlags: 0

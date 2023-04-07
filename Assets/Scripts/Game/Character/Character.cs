@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using UnityEngine;
 
@@ -7,6 +8,10 @@ namespace TapTest
         IInitializable,
         IActivable
     {
+        private int _countDiedCharacters;
+
+        public event Action OnDiedLast;
+        
         [SerializeField]
         private CharacterColor _characterColor;
         
@@ -30,6 +35,14 @@ namespace TapTest
         
         [field: SerializeField]
         public CharacterPhotonAdapter CharacterPhotonAdapter { get; private set; }
+
+        private void TryDied()
+        {
+            if (_countDiedCharacters + 1 >= PhotonNetwork.CurrentRoom.Players.Count)
+            {
+                OnDiedLast?.Invoke();
+            }
+        }
         
         public void Initialize()
         {
@@ -40,7 +53,23 @@ namespace TapTest
 
         public void SetPosition(Vector2 position) => transform.position = position;
 
-        public void Activate() => gameObject.SetActive(true);
-        public void Deactivate() => gameObject.SetActive(false);
+        public void Activate() => PhotonView.RPC("RPC_Activate", RpcTarget.AllBuffered);
+
+        public void Deactivate() => PhotonView.RPC("RPC_Deactivate", RpcTarget.AllBuffered);
+        
+        public void Died() => PhotonView.RPC("RPC_Died", RpcTarget.OthersBuffered);
+        
+        [PunRPC]
+        private void RPC_Died()
+        {
+            _countDiedCharacters++;
+            TryDied();
+        }
+
+        [PunRPC]
+        private void RPC_Activate() => gameObject.SetActive(true);
+
+        [PunRPC]
+        private void RPC_Deactivate() => gameObject.SetActive(false);
     }
 }

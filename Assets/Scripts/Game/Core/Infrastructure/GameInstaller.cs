@@ -32,10 +32,11 @@ namespace TapTest
             
             BindPrefab(_gameProvider.TickableService);
             BindPrefab(_gameProvider.InputPanel);
+            BindPrefab(_gameProvider.FinishGameView);
 
             if (PhotonNetwork.IsMasterClient)
             {
-                BindInstance(new MasterService());
+                BindInstance(new MasterClientService());
             }
 
             this.BindThis(Container, this);
