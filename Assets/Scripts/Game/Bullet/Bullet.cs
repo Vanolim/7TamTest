@@ -41,17 +41,16 @@ namespace TapTest
 
         public void Deactivate()
         {
-            gameObject.SetActive(false);
             PhotonView.RPC("RPC_Deactivate", RpcTarget.OthersBuffered);
+            gameObject.SetActive(false);
         }
 
         [PunRPC]
         private void RPC_Activate() => gameObject.SetActive(true);
-        //public void Activate() => gameObject.SetActive(true);
-        
+
         [PunRPC]
         private void RPC_Deactivate() => gameObject.SetActive(false);
-        //public void Deactivate() => gameObject.SetActive(false);
+        
         public void Destroy()
         {
             Deactivate();
