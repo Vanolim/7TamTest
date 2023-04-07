@@ -79,7 +79,6 @@ namespace TapTest
 
         public void CharacterDie()
         {
-            Debug.Log("444444444444444444");
             _inputAdapter.Deactivate();
             SendMessageCharacterData();
         }
@@ -87,7 +86,7 @@ namespace TapTest
         private void SendMessageCharacterData()
         {
             object[] content = { PhotonNetwork.NickName, _coinWallet.Value };
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient }; 
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; 
             PhotonNetwork.RaiseEvent(MessageCharacterDeadEventCode, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
