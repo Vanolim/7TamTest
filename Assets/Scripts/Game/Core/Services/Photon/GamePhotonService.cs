@@ -22,9 +22,10 @@ namespace TapTest
         public event Action<CharacterData> OnCharacterDied;
 
         [Inject]
-        private void Construct(CoinWallet coinWallet)
+        private void Construct(CoinWallet coinWallet, InputAdapter inputAdapter)
         {
             _coinWallet = coinWallet;
+            _inputAdapter = inputAdapter;
         }
 
         public void RegisterCharacter(Character character)
