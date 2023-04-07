@@ -63,6 +63,15 @@ namespace TapTest
                     .GetComponent<Character>();
                 character.PhotonView.ViewID = (int)data[2];
             }
+            else if (photonEvent.Code == CharacterIsDie && PhotonNetwork.IsMasterClient)
+            {
+                object[] data = (object[])photonEvent.CustomData;
+
+                string name = (string)data[0];
+                int coin = (int)data[1];
+                
+                Debug.Log(name + " " + coin);
+            }
         }
 
         public void SendMessageCharacterIsDie()
