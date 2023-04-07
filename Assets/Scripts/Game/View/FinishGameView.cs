@@ -47,7 +47,7 @@ namespace TapTest
             entry.SetParametrs(name, dataCoins, i.ToString());
                 
             RectTransform entryRectTransform = entry.GetComponent<RectTransform>();
-            entryRectTransform.anchoredPosition = new Vector2(0, _templateHeight * i);
+            entryRectTransform.anchoredPosition = new Vector2(0, -_templateHeight * i);
         }
     }
 }
