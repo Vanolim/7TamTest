@@ -14,9 +14,7 @@ namespace TapTest
         public PhotonView PhotonView { get; private set; }
         
         public float Damage { get; private set; }
-        
-        public GameObject Object => gameObject;
-        
+
         public event Action<Bullet> OnDestroyed;
         
         public void SetSpawnPoint(Transform point)
@@ -51,6 +49,7 @@ namespace TapTest
 
         public void Initialize(BulletSetting bulletSetting)
         {
+            Debug.Log(Damage);
             Damage = bulletSetting.Damage;
             PhotonView = gameObject.GetComponent<PhotonView>();
             gameObject.GetComponent<BulletMovement>().Initialize(bulletSetting.SpeedMovement);

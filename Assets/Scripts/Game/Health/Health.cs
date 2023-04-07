@@ -21,7 +21,6 @@ namespace TapTest
             _character = character;
             _gamePhotonService = gamePhotonService;
             _character.CollisionDetector.OnTakeDamage += TakeDamage;
-            Debug.Log(11111111111111111);
         }
 
         private void TakeDamage(float value)
