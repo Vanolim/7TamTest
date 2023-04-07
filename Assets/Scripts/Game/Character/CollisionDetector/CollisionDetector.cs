@@ -10,7 +10,6 @@ namespace TapTest
         private PhotonView _photonView;
         
         public event Action OnTakeCoin;
-        public event Action<float> OnTakeDamage;
 
         private void OnTriggerEnter2D(Collider2D col)
         {
@@ -23,9 +22,6 @@ namespace TapTest
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if(_photonView.IsMine == false)
-                return;
-            
             if (col.gameObject.TryGetComponent(out IDoingDamage doingDamage))
             {
                 doingDamage.TakeDamageEvent(_photonView);
