@@ -20,7 +20,7 @@ namespace TapTest
         private const byte MessageCharacterDeadEventCode = 2;
 
         public event Action<CharacterData> OnCharacterDied;
-
+        
         [Inject]
         private void Construct(CoinWallet coinWallet, InputAdapter inputAdapter)
         {
@@ -50,6 +50,12 @@ namespace TapTest
                 };
 
                 PhotonNetwork.RaiseEvent(CharacterSpawnEventCode, data, raiseEventOptions, sendOptions);
+                
+                Hashtable prop = new Hashtable();
+                prop.Add("char", character);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(prop);
+                
+                Debug.Log(2222);
             }
             else
             {
@@ -90,5 +96,7 @@ namespace TapTest
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient }; 
             PhotonNetwork.RaiseEvent(MessageCharacterDeadEventCode, content, raiseEventOptions, SendOptions.SendReliable);
         }
+        
+        
     }
 }

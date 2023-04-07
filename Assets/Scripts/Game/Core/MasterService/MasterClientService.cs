@@ -6,7 +6,8 @@ using Zenject;
 
 namespace TapTest
 {
-    public class MasterClientService : IDisposable
+    public class MasterClientService : IDisposable,
+        IInitializable
     {
         private GamePhotonService _gamePhotonService;
         private FinishGameView _finishGameView;
@@ -44,6 +45,17 @@ namespace TapTest
         public void Dispose()
         {
             _gamePhotonService.OnCharacterDied -= AddDiedCharacter;
+        }
+
+        public void Initialize()
+        {
+            var players = PhotonNetwork.CurrentRoom.Players;
+            Debug.Log(11111);
+            foreach (var VARIABLE in players.Values)
+            {
+                Character cha = (Character)VARIABLE.CustomProperties["character"];
+                Debug.Log(cha.gameObject.name);
+            }
         }
     }
 }
