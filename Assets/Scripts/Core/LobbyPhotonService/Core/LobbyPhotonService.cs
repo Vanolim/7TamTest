@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine;
 using Zenject;
 
 namespace TapTest
@@ -16,6 +17,7 @@ namespace TapTest
 
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
+            Debug.Log("Swithed");
             LeaveRoom();
         }
 
@@ -33,7 +35,10 @@ namespace TapTest
             _sceneLoader.Load(LoadableScene.Lobby);
         }
 
-        public override void OnJoinedRoom() => 
+        public override void OnJoinedRoom()
+        {
+            Debug.Log("Joined");
             PhotonNetwork.LoadLevel("Game");
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace TapTest
         {
             if (IsPlayerNameEnter(out string playerName))
             {
+                Debug.Log("Create");
                 PhotonNetwork.NickName = playerName;
                 PhotonNetwork.ConnectUsingSettings();
                 //PhotonNetwork.AutomaticallySyncScene = true;
@@ -36,6 +37,7 @@ namespace TapTest
         {
             if (IsPlayerNameEnter(out string playerName))
             {
+                Debug.Log("Join");
                 PhotonNetwork.NickName = playerName;
                 //PhotonNetwork.AutomaticallySyncScene = true;
                 PhotonNetwork.ConnectUsingSettings();

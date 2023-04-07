@@ -79,7 +79,6 @@ namespace TapTest
 
         public void CharacterDie()
         {
-            Debug.Log(PhotonNetwork.IsMasterClient);
             _inputAdapter.Deactivate();
             SendMessageCharacterData();
         }
