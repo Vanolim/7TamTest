@@ -64,6 +64,7 @@ namespace TapTest
         private IEnumerator WaitLoadLobby()
         {
             yield return new WaitForSeconds(_waitFinishedLoadLobbyValue);
+            _lobbyPhotonService.LeaveRoom();
             _lobbyPhotonService.LoadLobby();
         }
 

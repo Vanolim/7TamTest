@@ -12,6 +12,9 @@ namespace TapTest
         public void JoinRoom(string roomName) => 
             PhotonNetwork.JoinRoom(roomName);
 
+        public void LeaveRoom() => 
+            PhotonNetwork.LeaveRoom();
+
         public void LoadLobby() => 
             PhotonNetwork.LoadLevel("Lobby");
 

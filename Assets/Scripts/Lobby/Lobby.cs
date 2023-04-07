@@ -25,7 +25,6 @@ namespace TapTest
             if (IsPlayerNameEnter(out string playerName))
             {
                 PhotonNetwork.NickName = playerName;
-                PhotonNetwork.AutomaticallySyncScene = true;
                 PhotonNetwork.ConnectUsingSettings();
                 _roomOptions = new RoomOptions();
                 _photonService.CreateRoom(roomName, _roomOptions);
