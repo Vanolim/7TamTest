@@ -38,19 +38,28 @@ namespace TapTest
         
         public void Tick(float dt)
         {
-            if (CheckActivate())
+            if (_isCheck)
             {
-                _isCheck = false;
-                _inputAdapter.Activate();
+                if (CheckActivate())
+                {
+                    _isCheck = false;
+                    _inputAdapter.Activate();
+                }
             }
         }
 
         public void Initialize()
         {
             if (CheckActivate())
+            {
+                _isCheck = false;
                 Activate();
+            }
             else
+            {
+                _isCheck = true;
                 Deactivate();
+            }
         }
     }
 }
