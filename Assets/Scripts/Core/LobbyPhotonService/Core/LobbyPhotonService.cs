@@ -13,7 +13,12 @@ namespace TapTest
         {
             _sceneLoader = sceneLoader;
         }
-        
+
+        public override void OnMasterClientSwitched(Player newMasterClient)
+        {
+            LeaveRoom();
+        }
+
         public void CreateRoom(string roomName, RoomOptions roomOptions) => 
             PhotonNetwork.CreateRoom(roomName, roomOptions);
 
