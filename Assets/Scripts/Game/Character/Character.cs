@@ -44,12 +44,15 @@ namespace TapTest
 
         public void Deactivate() => PhotonView.RPC("RPC_Deactivate", RpcTarget.AllBuffered);
 
-        public void Died() => OnDiedLast?.Invoke();
+        public void Died() => PhotonView.RPC("RPC_Died", RpcTarget.All);
 
         [PunRPC]
         private void RPC_Activate() => gameObject.SetActive(true);
 
         [PunRPC]
         private void RPC_Deactivate() => gameObject.SetActive(false);
+        
+        [PunRPC]
+        private void RPC_Died() => OnDiedLast?.Invoke();
     }
 }

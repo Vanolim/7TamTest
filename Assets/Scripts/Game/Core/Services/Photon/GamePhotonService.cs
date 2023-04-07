@@ -87,7 +87,7 @@ namespace TapTest
         private void SendMessageCharacterData()
         {
             object[] content = { PhotonNetwork.NickName, _coinWallet.Value };
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All }; 
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.MasterClient }; 
             PhotonNetwork.RaiseEvent(MessageCharacterDeadEventCode, content, raiseEventOptions, SendOptions.SendReliable);
         }
     }
