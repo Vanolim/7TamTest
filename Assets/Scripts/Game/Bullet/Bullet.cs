@@ -14,6 +14,7 @@ namespace TapTest
         public PhotonView PhotonView { get; private set; }
         
         public float Damage { get; private set; }
+        
         public GameObject Object => gameObject;
         
         public event Action<Bullet> OnDestroyed;

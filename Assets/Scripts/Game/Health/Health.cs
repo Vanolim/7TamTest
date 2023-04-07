@@ -26,7 +26,6 @@ namespace TapTest
         private void TakeDamage(float value)
         {
             _currentValue -= value;
-            Debug.Log(_currentValue + " " + value);
             if (_currentValue <= 0)
             {
                 _gamePhotonService.LeaveRoom();
