@@ -5,7 +5,10 @@ namespace TapTest
     public class InputPanel : MonoBehaviour,
         IActivable
     {
-        public void Activate() => gameObject.SetActive(true);
-        public void Deactivate() => gameObject.SetActive(false);
+        [SerializeField]
+        private Canvas _canvas;
+
+        public void Activate() => _canvas.enabled = true;
+        public void Deactivate() => _canvas.enabled = false;
     }
 }

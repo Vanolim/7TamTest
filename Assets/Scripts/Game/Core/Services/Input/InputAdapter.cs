@@ -60,12 +60,14 @@ namespace TapTest
 
         public void Activate()
         {
+            _isActive = true;
             _characterInput.Enable();
             _inputPanel.Activate();
         }
 
         public void Deactivate()
         {
+            _isActive = false;
             _characterInput.Disable();
             _inputPanel.Deactivate();
         }
