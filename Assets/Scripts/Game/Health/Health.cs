@@ -21,7 +21,7 @@ namespace TapTest
             _character = character;
             _gamePhotonService = gamePhotonService;
             _character.CharacterPhotonAdapter.OnTakeDamage += TakeDamage;
-            _character.OnDiedLast += DiedCharacter;
+            _character.OnDiedLast += DeadCharacter;
         }
 
         private void TakeDamage(float value)
@@ -30,17 +30,15 @@ namespace TapTest
             
             if (_currentValue <= 0)
             {
-                DiedCharacter();
-                _character.Died();
+                DeadCharacter();
             }
             
             _character.PhotonView.RPC("RPC_UpdateHealthBar", RpcTarget.AllBuffered, 
                 _maxValue, _currentValue);
         }
 
-        private void DiedCharacter()
+        private void DeadCharacter()
         {
-            Debug.Log(_character.gameObject.name);
             _character.Deactivate();
             _gamePhotonService.CharacterDie();
         }

@@ -32,18 +32,8 @@ namespace TapTest
         [field: SerializeField]
         public CharacterPhotonAdapter CharacterPhotonAdapter { get; private set; }
 
-        private int _countDiedCharacters;
-
         public event Action OnDiedLast;
 
-        private void TryDied()
-        {
-            if (_countDiedCharacters + 1 >= PhotonNetwork.CurrentRoom.Players.Count)
-            {
-                OnDiedLast?.Invoke();
-            }
-        }
-        
         public void Initialize()
         {
             _characterColor.Initialize();
@@ -56,15 +46,8 @@ namespace TapTest
         public void Activate() => PhotonView.RPC("RPC_Activate", RpcTarget.AllBuffered);
 
         public void Deactivate() => PhotonView.RPC("RPC_Deactivate", RpcTarget.AllBuffered);
-        
-        public void Died() => PhotonView.RPC("RPC_Died", RpcTarget.OthersBuffered);
-        
-        [PunRPC]
-        private void RPC_Died()
-        {
-            _countDiedCharacters++;
-            TryDied();
-        }
+
+        public void Died() => OnDiedLast?.Invoke();
 
         [PunRPC]
         private void RPC_Activate() => gameObject.SetActive(true);

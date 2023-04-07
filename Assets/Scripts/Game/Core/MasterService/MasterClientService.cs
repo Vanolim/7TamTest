@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Photon.Pun;
-using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace TapTest
 {
-    public class MasterClientService : IDisposable,
-        IInitializable
+    public class MasterClientService : IDisposable
     {
         private GamePhotonService _gamePhotonService;
         private FinishGameView _finishGameView;
@@ -25,13 +24,18 @@ namespace TapTest
         private void AddDiedCharacter(CharacterData characterData)
         {
             _deadCharacterDats.Add(characterData);
-            Debug.Log($"{_deadCharacterDats.Count} -- {PhotonNetwork.CurrentRoom.Players.Count}");
             TryFinished();
         }
 
         private void TryFinished()
         {
-            if (_deadCharacterDats.Count >= PhotonNetwork.CurrentRoom.Players.Count)
+            if (_deadCharacterDats.Count < PhotonNetwork.CurrentRoom.Players.Count)
+            {
+                Character[] characters = Object.FindObjectsOfType<Character>();
+                if(characters.Length == 1)
+                    characters[0].Died();
+            }
+            else
             {
                 FinishGame();
             }
@@ -45,17 +49,6 @@ namespace TapTest
         public void Dispose()
         {
             _gamePhotonService.OnCharacterDied -= AddDiedCharacter;
-        }
-
-        public void Initialize()
-        {
-            var players = PhotonNetwork.CurrentRoom.Players;
-            Debug.Log(11111);
-            foreach (var VARIABLE in players.Values)
-            {
-                Character cha = (Character)VARIABLE.CustomProperties["character"];
-                Debug.Log(cha.gameObject.name);
-            }
         }
     }
 }
