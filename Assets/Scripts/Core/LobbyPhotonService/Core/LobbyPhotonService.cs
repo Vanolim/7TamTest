@@ -15,8 +15,16 @@ namespace TapTest
         public void LeaveRoom() => 
             PhotonNetwork.LeaveRoom();
 
-        public void LoadLobby() => 
+        public override void OnLeftRoom()
+        {
+            base.OnLeftRoom();
+            LoadLobby();
+        }
+
+        private void LoadLobby()
+        {
             PhotonNetwork.LoadLevel("Lobby");
+        }
 
         public override void OnJoinedRoom() => 
             PhotonNetwork.LoadLevel("Game");

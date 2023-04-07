@@ -19,7 +19,7 @@ namespace TapTest
         
         private void Load(string sceneId)
         {
-            AsyncOperation operation =  SceneManager.LoadSceneAsync(sceneId);
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
             StartCoroutine(AnimateLoadingBar(operation));
         }
 

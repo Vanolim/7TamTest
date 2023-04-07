@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using Zenject;
 
@@ -14,6 +15,8 @@ namespace TapTest
 
         public override void InstallBindings()
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            
             BindPrefab(_lobbyUIContext);
             BindInstance(new Lobby());
             

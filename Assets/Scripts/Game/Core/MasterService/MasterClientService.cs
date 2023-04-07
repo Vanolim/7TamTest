@@ -65,7 +65,6 @@ namespace TapTest
         {
             yield return new WaitForSeconds(_waitFinishedLoadLobbyValue);
             _lobbyPhotonService.LeaveRoom();
-            _lobbyPhotonService.LoadLobby();
         }
 
         public void Dispose()
