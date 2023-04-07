@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
@@ -12,14 +13,16 @@ namespace TapTest
     {
         private GamePhotonService _gamePhotonService;
         private FinishGameView _finishGameView;
+        private CoroutineService _coroutineService;
         private readonly List<CharacterData> _deadCharacterDats = new();
 
         [Inject]
         private void Construct(GamePhotonService gamePhotonService,
-            FinishGameView finishGameView)
+            FinishGameView finishGameView, CoroutineService coroutineService)
         {
             _gamePhotonService = gamePhotonService;
             _finishGameView = finishGameView;
+            _coroutineService = coroutineService;
             _gamePhotonService.OnCharacterDied += AddDiedCharacter;
             _finishGameView.Deactivate();
         }
@@ -48,6 +51,13 @@ namespace TapTest
         {
             SetData();
             _finishGameView.Activate();
+            _coroutineService.StartCoroutine(Wait());
+        }
+
+        private IEnumerator Wait()
+        {
+            yield return new WaitForSeconds(5);
+            PhotonNetwork.LoadLevel("Lobby");
         }
 
         private void SetData()

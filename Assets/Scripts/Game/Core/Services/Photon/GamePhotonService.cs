@@ -15,6 +15,7 @@ namespace TapTest
 
         private CoinWallet _coinWallet;
         private InputAdapter _inputAdapter;
+        private FinishGameView _finishGameView;
 
         private const byte CharacterSpawnEventCode = 1;
         private const byte MessageCharacterDeadEventCode = 2;

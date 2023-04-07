@@ -592,7 +592,7 @@ MonoBehaviour:
   PhotonView: {fileID: 5888287006629908104}
   _entryTemplate: {fileID: 1625009377644268324, guid: d50c045ce295c4464924518be858cede, type: 3}
   _entryContainer: {fileID: 7792318150320248170}
-  _templateHeight: 72
+  _templateHeight: 100
   _leave: {fileID: 2354649996632744078}
 --- !u!114 &5888287006629908104
 MonoBehaviour:
