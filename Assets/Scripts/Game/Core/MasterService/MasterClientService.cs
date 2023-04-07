@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Photon.Pun;
+using UnityEngine;
 using Zenject;
 
 namespace TapTest
@@ -23,6 +24,7 @@ namespace TapTest
         private void AddDiedCharacter(CharacterData characterData)
         {
             _deadCharacterDats.Add(characterData);
+            Debug.Log($"{_deadCharacterDats.Count} -- {PhotonNetwork.CurrentRoom.Players.Count}");
             TryFinished();
         }
 

@@ -36,6 +36,7 @@ namespace TapTest
 
             if (PhotonNetwork.IsMasterClient)
             {
+                Debug.Log(1111111111);
                 BindInstance(new MasterClientService());
             }
 
