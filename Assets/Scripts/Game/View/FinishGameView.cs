@@ -28,9 +28,9 @@ namespace TapTest
 
         private void LeavedEvent() => OnLeaved?.Invoke();
         
-        public void Test(string data)
+        public void Test(string name, string dataCoins, int i)
         {
-            //PhotonView.RPC("RPC_Init", RpcTarget.AllBuffered, name, coins, i);
+            PhotonView.RPC("RPC_Init", RpcTarget.AllBuffered, name, dataCoins, i);
         }
 
         public void Activate()

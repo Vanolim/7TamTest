@@ -46,23 +46,18 @@ namespace TapTest
 
         private void FinishGame()
         {
-            _finishGameView.Test(SetData());
+            SetData();
             _finishGameView.Activate();
         }
 
-        private string SetData()
+        private void SetData()
         {
             CharacterData[] sortDeadCharacterDats = _deadCharacterDats.OrderBy(x => x.CountCoins).ToArray();
-            
-            string data = "";
+
             for (int i = 0; i < sortDeadCharacterDats.Length; i++)
             {
-                data += sortDeadCharacterDats[i].Name + ',';
-                data += sortDeadCharacterDats[i].CountCoins + ',';
-                data += i + ";";
+                _finishGameView.Test(sortDeadCharacterDats[i].Name, sortDeadCharacterDats[i].CountCoins.ToString(), i);
             }
-
-            return data;
         }
 
         public void Dispose()
