@@ -6,8 +6,8 @@ namespace TapTest
 {
     public class CoinWallet : IDisposable
     {
-        private int _value;
         private Character _character;
+        private int _value;
 
         [Inject]
         private void Construct(Character character)

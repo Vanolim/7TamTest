@@ -5,8 +5,7 @@ using Zenject;
 
 namespace TapTest
 {
-    public class Health : IDisposable,
-        IInitializable
+    public class Health : IDisposable
     {
         private Character _character;
         private GamePhotonService _gamePhotonService;
@@ -21,6 +20,8 @@ namespace TapTest
             _currentValue = _maxValue;
             _character = character;
             _gamePhotonService = gamePhotonService;
+            _character.CollisionDetector.OnTakeDamage += TakeDamage;
+            Debug.Log(11111111111111111);
         }
 
         private void TakeDamage(float value)
@@ -34,11 +35,6 @@ namespace TapTest
             
             _character.PhotonView.RPC("RPC_UpdateHealthBar", RpcTarget.AllBuffered, 
                 _maxValue, _currentValue);
-        }
-
-        public void Initialize()
-        {
-            _character.CollisionDetector.OnTakeDamage += TakeDamage;
         }
 
         public void Dispose()
