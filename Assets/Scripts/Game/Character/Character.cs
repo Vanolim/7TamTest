@@ -8,13 +8,9 @@ namespace TapTest
         IInitializable,
         IActivable
     {
-        private int _countDiedCharacters;
-
-        public event Action OnDiedLast;
-        
         [SerializeField]
         private CharacterColor _characterColor;
-        
+
         [SerializeField]
         private CharacterName _characterName;
 
@@ -26,19 +22,22 @@ namespace TapTest
 
         [field: SerializeField]
         public CharacterGun CharacterGun { get; private set; }
-        
+
         [field: SerializeField]
         public CharacterCanvasView CharacterCanvasView { get; private set; }
-        
+
         [field: SerializeField]
         public CollisionDetector CollisionDetector { get; private set; }
-        
+
         [field: SerializeField]
         public CharacterPhotonAdapter CharacterPhotonAdapter { get; private set; }
 
+        private int _countDiedCharacters;
+
+        public event Action OnDiedLast;
+
         private void TryDied()
         {
-            Debug.Log($"{_countDiedCharacters} -- {PhotonNetwork.CurrentRoom.Players.Count}");
             if (_countDiedCharacters + 1 >= PhotonNetwork.CurrentRoom.Players.Count)
             {
                 OnDiedLast?.Invoke();

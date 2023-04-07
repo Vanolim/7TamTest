@@ -1,5 +1,6 @@
 using System;
 using Photon.Pun;
+using UnityEngine;
 using Zenject;
 
 namespace TapTest
@@ -39,6 +40,7 @@ namespace TapTest
 
         private void DiedCharacter()
         {
+            Debug.Log(_character.gameObject.name);
             _character.Deactivate();
             _gamePhotonService.CharacterDie();
         }
