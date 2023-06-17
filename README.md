@@ -58,10 +58,12 @@
 
 4)Есть система рейтинга, которая отображается в конце сессии комнаты
 <details>
-<summary>Лобби</summary>
+<summary>Окно рейтинга</summary>
 <br>
 <img width="458" alt="image" src="https://github.com/Vanolim/7TamTest/assets/60060770/455ad90d-019f-47ba-b821-c1c6813fea9c">
 </details>
+
+5)Небольшая стейт машина для перехода между сценами и логикой приложения
 
 # Плагины, использованные в проекте:
 1) DOTween
