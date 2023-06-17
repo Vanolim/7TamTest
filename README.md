@@ -53,13 +53,14 @@
 <details>
 <summary>Лобби</summary>
 <br>
-![image](https://github.com/Vanolim/7TamTest/assets/60060770/87303522-3476-44f6-9bbb-dbcb8328822c)
+<img width="458" alt="image" src="https://github.com/Vanolim/7TamTest/assets/60060770/87303522-3476-44f6-9bbb-dbcb8328822c">
 </details>
+
 4)Есть система рейтинга, которая отображается в конце сессии комнаты
 <details>
 <summary>Лобби</summary>
 <br>
-![image](https://github.com/Vanolim/7TamTest/assets/60060770/455ad90d-019f-47ba-b821-c1c6813fea9c)
+<img width="458" alt="image" src="https://github.com/Vanolim/7TamTest/assets/60060770/455ad90d-019f-47ba-b821-c1c6813fea9c">
 </details>
 
 # Плагины, использованные в проекте:
