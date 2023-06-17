@@ -45,3 +45,25 @@
 появляется победный pop-up с информацией, где указаны имя
 победителя и сколько монет он собрал.
 </details>
+
+# Основные особенности проекта:
+1) Сетевая игра построенная на Photon.
+2) Несмотря на Photon зависимости передаются с помощью Zenject.
+3) Игра имеет лобби для установки ника игрока, создании и присоединения к комнате
+<details>
+<summary>Лобби</summary>
+<br>
+![image](https://github.com/Vanolim/7TamTest/assets/60060770/87303522-3476-44f6-9bbb-dbcb8328822c)
+</details>
+4)Есть система рейтинга, которая отображается в конце сессии комнаты
+<details>
+<summary>Лобби</summary>
+<br>
+![image](https://github.com/Vanolim/7TamTest/assets/60060770/455ad90d-019f-47ba-b821-c1c6813fea9c)
+</details>
+
+# Плагины, использованные в проекте:
+1) DOTween
+2) TextMeshPro
+3) Photon
+4) Zenject
